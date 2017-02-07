@@ -10,8 +10,14 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
   var userSchema = mongoose.Schema({
-    username: {type:String, required:true, unique:true},
+    name:{type:String, required:true},
     password: {type:String, required:true},
+    email: {type:String, required:true, unique:true},
+    college:{type:String, required:true},
+    year:{type:String, required:true},
+    phone:{type:String, required:true},
+    gender:{type:String, required:true},
+    is_verified:{type:Boolean}
     // basearea : {type:String,required:true},
     // conquered : Array,
     // score : {type:Number , required:true}
