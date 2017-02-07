@@ -3,7 +3,6 @@ mongoose.connect('mongodb://localhost/xtasy');
 
 var assert = require('assert');
 var bcrypt = require('bcryptjs');
-var mongoose = require('mongoose');
 SALT_WORK_FACTOR = 10;
 
 var db = mongoose.connection;
