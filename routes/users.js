@@ -35,12 +35,15 @@ router.post('/login',function(req,res,next){
     if(err){
       console.log(err);
     }
-    if(foundUser.password == req.body.login_password){
-      res.send(foundUser);
-    }
-    else{
-      res.send('user not found');
-    }
+    // test a matching password
+        foundUser.comparePassword(req.body.login_password, function(err, isMatch) {
+            if (err) throw err;
+            if(isMatch) res.send(foundUser);
+            else {
+              foundUser = {}
+              res.send(foundUser);
+            }
+        });
   });
 });
 
