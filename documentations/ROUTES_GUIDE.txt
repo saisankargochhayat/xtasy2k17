@@ -1,0 +1,18 @@
+login form
+  method : post
+  action: "/users/login"
+  parameters: 'login_email', 'login_password'
+
+Sign Up form
+  method : post
+  action: "/users/register"
+  parameters: 'name','password','email','college','year','phone','gender'
+
+logout
+  method : get
+  uri : "/users/logout"
+
+User account verification
+  method: get
+  uri : "/users/verify/:id"
+  where ':id' is the value of _id field of the user's document in database
