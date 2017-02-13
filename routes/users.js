@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var mailer = require('node-mailer');
 var user = require('../model/user');
 
 /* GET users listing. */
@@ -17,16 +18,26 @@ router.post('/register',function(req,res,next){
     phone: req.body.phone,
     gender: req.body.gender
   });
+
+  // new mailer.Mail({
+	//    from: 'noreply@domain.com',
+	//    to: newUser.email,
+	//    subject: 'Account verification for XTASY 2k17',
+	//    body: 'verify your account by visiting http://localhosl:3000/user/verify/id',
+	//    callback: function(err, data){
+	// 	  console.log(err);
+	// 	  console.log(data);
+	//    }
+  // });
+
   newUser.save(function(err){
     if(err){
       console.log(err.stack);
     }
-    user.find({email:req.body.email},function(err,foundUser){
-      if(err){
-        console.log(err);
-      }
-      res.send(foundUser);
-    });
+    else{
+      req.session.user = user;
+      res.json(newUser);
+    }
   });
 });
 
@@ -38,7 +49,10 @@ router.post('/login',function(req,res,next){
     // test a matching password
         foundUser.comparePassword(req.body.login_password, function(err, isMatch) {
             if (err) throw err;
-            if(isMatch) res.send(foundUser);
+            if(isMatch) {
+              req.session.user = user;
+              res.send(foundUser);
+            }
             else {
               foundUser = {}
               res.send(foundUser);
