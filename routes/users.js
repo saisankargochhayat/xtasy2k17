@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 
-//register form action/url -> /user/register
+//register form action/url -> /users/register
 router.post('/register',function(req,res,next){
   var newUser = new user({
     name: req.body.name,
