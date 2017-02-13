@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mailer = require('node-mailer');
+// var mailer = require('node-mailer');
 var user = require('../model/user');
 
 /* GET users listing. */
