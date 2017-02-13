@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
 // var mailer = require('node-mailer');
 var user = require('../model/user');
 
@@ -8,6 +9,8 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+
+//register form action/url -> /user/register
 router.post('/register',function(req,res,next){
   var newUser = new user({
     name: req.body.name,
@@ -41,6 +44,28 @@ router.post('/register',function(req,res,next){
   });
 });
 
+//user verification route-> /users/verify/:id
+router.get('/verify/:id',function(req,res){
+  user.findOne({_id:mongoose.Types.ObjectId(req.params.id)},function(err,foundUser){
+    if(err) return console.log(err);
+    if(foundUser.__v==true) return res.send('Account already verified!');
+    foundUser.__v = true;
+    foundUser.save(function(err){
+      if(err) return console.log(err);
+      res.json(foundUser);
+    });
+  });
+});
+
+
+//logout href -> /users/logout
+router.get('/logout',function(req,res){
+  req.session.reset();
+  res.redirect('/');
+});
+
+
+//login form action/url -> /users/login
 router.post('/login',function(req,res,next){
   user.findOne({email:req.body.login_email},function(err,foundUser){
     if(err){
