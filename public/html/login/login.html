@@ -2,20 +2,19 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!--[if ie]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
 
-    <title>News | Synergy - Responsive and Interactive HTML Portfolio </title>
+	<title>News | Synergy - Responsive and Interactive HTML Portfolio </title>
 
-    <meta name="description" content="" />
-    <meta name="author" content="MEDIACREED.COM" />
+	<meta name="description" content="" />
+	<meta name="author" content="MEDIACREED.COM" />
 
         <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="redg.css" />
         <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic|PT+Sans+Caption:400,700' rel='stylesheet' type='text/css' />
 
         <!-- SCRIPT IE FIXES -->
@@ -27,9 +26,12 @@
 
 
         <!-- START TEMPLATE JavaScript load -->
-        <script type="text/javascript" src="js/libs/jquery-1.7.2.min.js"></script>
+    	<script type="text/javascript" src="js/libs/jquery-1.7.2.min.js"></script>
         <script type="text/javascript" src="js/libs/modernizr.custom.min.js"></script>
         <script type="text/javascript" src="js/libs/jquery.wipetouch.js"></script>
+
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBttxrYoBq8srteD7evmDqnaK6V2Uun42o&amp;sensor=true"></script>
+
         <script type="text/javascript" src="js/libs/jquery.gmap.min.js"></script>
         <script type="text/javascript" src="js/greensock/minified/TweenMax.min.js"></script>
         <script type="text/javascript" src="js/libs/jquery.timer.js"></script>
@@ -54,7 +56,6 @@
             _V_.options.flash.params = params;
 
         </script>
-
 </head>
 
 <body>
@@ -237,73 +238,87 @@
             <div id="menu-hider-icon"></div>
         </div>
     </div><!-- end #menu-container -->
+
     <div id="module-container"><!-- start #module-container -->
-    <div class="login-wrap">
-    <div class="login-html">
-        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
-        <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
-        <div class="login-form">
-            <div class="sign-in-htm">
-                <div class="group">
-                    <label for="email" class="label"><b>Email</b></label>
-                    <input id="email" type="email" class="input">
-                </div>
-                <div class="group">
-                    <label for="pass" class="label"><b>Password</b></label>
-                    <input id="pass" type="password" class="input" data-type="password">
-                </div>
-                <div class="group">
-                    <input id="check" type="checkbox" class="check" checked>
-                    <label for="check"><span class="icon"></span> Keep me Signed in</label>
-                </div>
-                <div class="group">
-                    <input type="submit" class="button" value="SIGN IN">
-                </div>
-                <div class="hr"></div>
-                <div class="foot-lnk">
-                    <a href="#forgot">Forgot Password?</a>
+        <div id="module-background-holder">
+        	<img src="assets/media/news/backgroundNewsVertical.jpg" onload="animateModuleBackground(this)" class="module-background" id="module-background" alt="" />
+        </div>
+        <div id="module-container-holder" class="module-position-lc"  data-id="module-position-lc">
+            <div id="module-news-vertical" class="module-news-vertical shadow-side-right">
+            	<div id="module-news-vertical-holder">
+                    <div id="module-news-vertical-container">
+
+                        <div class="login-form">
+                            <div class="sign-in-htm">
+                                <div class="group">
+                                    <label for="email" class="label"><b>Email</b></label>
+                                    <input id="email" type="email" class="input">
+                                </div>
+                                <div class="group">
+                                    <label for="pass" class="label"><b>Password</b></label>
+                                    <input id="pass" type="password" class="input" data-type="password">
+                                </div>
+                                <div class="group">
+                                    <input id="check" type="checkbox" class="check" checked>
+                                    <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                                </div>
+                                <div class="group">
+                                    <input type="submit" class="button" value="SIGN IN">
+                                </div>
+                                <div class="hr"></div>
+                                <div class="foot-lnk">
+                                    <a href="#forgot">Forgot Password?</a>
+                                </div>
+                            </div>
+                            <div class="sign-up-htm">
+                                <div class="group">
+                                    <label for="user" class="label"><b>Username</b></label>
+                                    <input id="user" type="text" class="input">
+                                </div>
+                                <div class="group">
+                                    <label for="pass" class="label"><b>Email Address</b></label>
+                                    <input id="pass" type="text" class="input">
+                                </div>
+                                <div class="group">
+                                    <label for="pass" class="label"><b>Password</b></label>
+                                    <input id="pass" type="password" class="input" data-type="password">
+                                </div>
+                                <div class="group">
+                                    <label for="colg" class="label"><b>Name of the Institution</b></label>
+                                    <input id="colg" type="text" class="input">
+                                </div>
+                                <div class="group">
+                                    <label for="year" class="label"><b>Year of Study</b></label>
+                                    <input id="year" type="text" class="input">
+                                </div>
+                                <div class="group">
+                                    <label for="gender" class="label"><b>Gender:</b><input name="gender" id="male" type="radio"> Male<input name="gender" id="female" type="radio"> Female</label>
+                                </div>
+                                <div class="group">
+                                    <input type="submit" class="button" value="Sign Up">
+                                </div>
+                                  <div class="hr"></div>
+                                <div class="foot-lnk">
+                                    <label for="tab-1">Already Member?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="sign-up-htm">
-                <div class="group">
-                    <label for="user" class="label"><b>Username</b></label>
-                    <input id="user" type="text" class="input">
-                </div>
-                <div class="group">
-                    <label for="pass" class="label"><b>Email Address</b></label>
-                    <input id="pass" type="text" class="input">
-                </div>
-                <div class="group">
-                    <label for="pass" class="label"><b>Password</b></label>
-                    <input id="pass" type="password" class="input" data-type="password">
-                </div>
-                <div class="group">
-                    <label for="colg" class="label"><b>Name of the Institution</b></label>
-                    <input id="colg" type="text" class="input">
-                </div>
-                <div class="group">
-                    <label for="year" class="label"><b>Year of Study</b></label>
-                    <input id="year" type="text" class="input">
-                </div>
-                <div class="group">
-                    <label for="gender" class="label"><b>gender:</b><input name="gender" id="male" type="radio"> Male<input name="gender" id="female" type="radio"> Female</label>
-                </div>
-                <div class="group">
-                    <input type="submit" class="button" value="Sign Up">
-                </div>
-                <!-- <div class="hr"></div> -->
-                <div class="foot-lnk">
-                    <label for="tab-1">Already Member?</a>
-                </div>
+            <div id="module-scrollbar-holder">
+                <div id="module-scrollbar-background" class="opacity_4"></div>
+                <div id="module-scrollbar-dragger"></div>
             </div>
         </div>
-    </div>
+
+    </div><!-- end #module-container -->
 </div>
-</div><!-- end #module-container -->
+
 <!-- START LOADING CONTAINER AND ANIMATION-->
 <div id="load-container"></div>
 <div id="loading-animation">
-    <img src="assets/loaders/loader.gif" width="16" height="11" alt="Synergy - loading animation"/>
+	<img src="assets/loaders/loader.gif" width="16" height="11" alt="Synergy - loading animation"/>
 </div>
 <!-- END LOADING CONTAINER AND ANIMATION-->
 
