@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.createConnection('mongodb://localhost:27017/xtasy');
+
 
 var assert = require('assert');
 var bcrypt = require('bcrypt-nodejs');
