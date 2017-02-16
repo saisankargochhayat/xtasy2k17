@@ -16,6 +16,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
     year:{type:String, required:true},
     phone:{type:String, required:true},
     gender:{type:String, required:true},
+    events:{type:[String]},
     is_verified:{type:Boolean}
     // basearea : {type:String,required:true},
     // conquered : Array,
