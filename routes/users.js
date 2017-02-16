@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
 
 //register form action/url -> /users/register
 router.post('/register',function(req,res,next){
+  console.log(req.body);
   var newUser = new user({
     name: req.body.name,
     password: req.body.password,
@@ -37,7 +38,7 @@ router.post('/register',function(req,res,next){
     if(err){
       return console.log(err.stack);
     }
-    req.session.user = user;
+    req.session.user = newUser;
     res.json(newUser);
   });
 });
@@ -46,10 +47,11 @@ router.post('/register',function(req,res,next){
 router.get('/verify/:id',function(req,res,next){
   user.findOne({_id:mongoose.Types.ObjectId(req.params.id)},function(err,foundUser){
     if(err) return console.log(err);
-    if(foundUser.__v==true) return res.send('Account already verified!');
-    foundUser.__v = true;
+    if(foundUser.is_verified==true) return res.send('Account already verified!');
+    foundUser.is_verified = true;
     foundUser.save(function(err){
       if(err) return console.log(err);
+      req.session.user = foundUser;
       res.json(foundUser);
     });
   });
@@ -67,14 +69,17 @@ router.get('/logout',function(req,res,next){
 router.post('/login',function(req,res,next){
   user.findOne({email:req.body.login_email},function(err,foundUser){
     if(err){
-      console.log(err);
+      return console.log(err);
+    }
+    if(!foundUser){
+      return res.json({});
     }
     // test a matching password
         foundUser.comparePassword(req.body.login_password, function(err, isMatch) {
             if (err) throw err;
             if(isMatch) {
-              req.session.user = user;
-              res.send(foundUser);
+              req.session.user = foundUser;
+              res.json(foundUser);
             }
             else {
               foundUser = {}

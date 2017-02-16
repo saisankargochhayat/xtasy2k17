@@ -16,3 +16,6 @@ User account verification
   method: get
   uri : "/users/verify/:id"
   where ':id' is the value of _id field of the user's document in database
+
+
+note:- use the awesome postman app to verify api routes
