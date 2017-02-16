@@ -261,20 +261,19 @@
                             <div class="login" id="module-text-page-holder-philosophy">
                               <div class="login-triangle"></div>
                               
-                              <h2 class="login-header">Log in</h2>
+                              <h2 class="login-header">SIGN IN</h2>
 
-                              <form class="login-container">
-                                <p><input type="text" placeholder="Enter your name"></p>
-                                <p><input type="number" placeholder="Mobile Number"></p>
-                                <p><input type="email" placeholder="Email"></p>
-                                <p><input type="password" placeholder="Password"></p>
-                                <p><input type="email" placeholder="Email"></p>
+                              <form class="login-container" method="post" action="/users/register">
+                                <p><input type="text" name="name" placeholder="Enter your name"></p>
+                                <p><input type="number" name="password" placeholder="Mobile Number"></p>
+                                <p><input type="email" name="email" placeholder="Email"></p>
+                                <p><input type="password" name="password" placeholder="Password"></p>
                                 <div style="padding-left:12px;" class="input-group" required="">
                                         <span class="radio-inline">
-                                              <input type="radio" name="sex" id="inlineRadio1" value="male"> Male
+                                              <input type="radio" name="gender" id="inlineRadio1" value="male"> Male
                                             </span>
                                             <span class="radio-inline">
-                                              <input type="radio" name="sex" id="inlineRadio2" value="female"> Female
+                                              <input type="radio" name="gender" id="inlineRadio2" value="female"> Female
                                         </span>
                                 </div>
                                 <p>
@@ -291,7 +290,7 @@
                                     </p>
                                     <div id="select-error"></div>
                                 </p>
-                                <div class="input-group" style="padding-left:14px;">
+                                <p>
                                 <label>Year Of Study:</label><br>
                                         <label class="radio-inline">
                                           <input type="radio" name="year" id="inlineRadio1" value="1st"> 1st Year
@@ -305,10 +304,10 @@
                                         <label class="radio-inline">
                                           <input type="radio" name="year" id="inlineRadio3" value="4th" required="" class="parsley-validated"> 4th Year
                                         </label>
-                                        <label class="radio-inline">
-                                          <input type="radio" name="year" id="inlineRadio3" value="5th" required="" class="parsley-validated"> 5th Year
-                                        </label>
-                                </div>
+                                       
+                                </p>
+                                <p><input type="submit" value="Sign in"></p>
+
                               </form>
                             </div>
                         <!-- /div> -->
