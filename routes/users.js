@@ -35,17 +35,15 @@ router.post('/register',function(req,res,next){
 
   newUser.save(function(err){
     if(err){
-      console.log(err.stack);
+      return console.log(err.stack);
     }
-    else{
-      req.session.user = user;
-      res.json(newUser);
-    }
+    req.session.user = user;
+    res.json(newUser);
   });
 });
 
 //user verification route-> /users/verify/:id
-router.get('/verify/:id',function(req,res){
+router.get('/verify/:id',function(req,res,next){
   user.findOne({_id:mongoose.Types.ObjectId(req.params.id)},function(err,foundUser){
     if(err) return console.log(err);
     if(foundUser.__v==true) return res.send('Account already verified!');
@@ -59,7 +57,7 @@ router.get('/verify/:id',function(req,res){
 
 
 //logout href -> /users/logout
-router.get('/logout',function(req,res){
+router.get('/logout',function(req,res,next){
   req.session.reset();
   res.redirect('/');
 });
