@@ -82,11 +82,9 @@ router.post('/login', function(req, res, next) {
         foundUser.comparePassword(req.body.login_password, function(err, isMatch) {
             if (err) throw err;
             if (isMatch) {
-                req.session.email = foundUser.email;
-                req.session.userid = foundUser._id;
-                req.session.name = foundUser.name;
-                console.log(req.session.userid + " is the user id");
-                console.log(req.session.name+ " is the User");
+                req.session.user = foundUser;
+                console.log(req.session.user._id + " is the user id");
+                console.log(req.session.user.name+ " is the User");
                 res.json(foundUser);
             } else {
                 foundUser = {}
