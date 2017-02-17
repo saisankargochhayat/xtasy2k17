@@ -6,7 +6,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {  display: block; }
 body { line-height: 1; }
-ol, ul { list-style: none; }
+/*ol, ul { list-style: none; }*/
 blockquote, q { quotes: none; }
 blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
 table { border-collapse: collapse; border-spacing: 0; }
@@ -77,6 +77,11 @@ html, body
     z-index: 9999999;
 	overflow:auto;
 
+}
+#rule{
+  font-size: 15px;
+  font-family: ubuntu;
+  font-weight: bold;
 }
 #console-log span
 {
@@ -205,15 +210,14 @@ submenu holder has overflow hidden */
 }
 
 #regi {
-    	width: 150px;
-    	height: 30px;
+    	width: 300px;
+    	height: 50px;
     	background-color: #702697;
     	font-size: 20px;
       text-align: center;
-      border-radius: 10%;
-    	font-family :Ubuntu;
+      font-family :Ubuntu;
     	color : #FFFFFF;
-    	
+
 
 }
 /* END fix IE 8*/
@@ -264,10 +268,10 @@ submenu holder has overflow hidden */
 	clear:both;
 	position:relative;
 	float:left;
-	background-image:url(../assets/media/logo.png);
+	background-image:url(../assets/media/2.png);
 	background-repeat:no-repeat;
-	width: 140px;
-	height: 90px;
+	width: 200px;
+	height: 100px;
 	margin: 28px 0 28px -70px;
 	z-index: 8;
 	left:50%;
@@ -2700,14 +2704,16 @@ h1, h2, h3, h4, h5, h6
 	top:0px;
 	z-index:992;
 	visibility:hidden;
+  overflow:scroll;
 }
 #full-width-info-container
 {
-	/*position:relative;
-	float:left;*/
+
+	float:left;
 	display: inline-block;
     position: relative;
     z-index:2;
+    overflow:auto;
 }
 .full-width-info-container
 {
