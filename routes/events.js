@@ -14,7 +14,7 @@ router.get('/:event_id',function(req,res,next){
 });
 
 //event creation-only for admin page -> /events/create/:event_id
-router.get('/create/:event_id',function(req,res,next){
+router.post('/create/:event_id',function(req,res,next){
   var event = new Events({
     event_id : req.params.event_id
   });
@@ -25,7 +25,7 @@ router.get('/create/:event_id',function(req,res,next){
 });
 
 //event registration -> /events/register/:event_id
-router.get('/register/:event_id',function(req,res,next){
+router.put('/register/:event_id',function(req,res,next){
   var user = req.session.user;
   console.log(user);
   Events.findOneAndUpdate({event_id:req.params.event_id},{$addToSet: {users:user._id}},{new:true},function(err,foundevent){
@@ -39,7 +39,7 @@ router.get('/register/:event_id',function(req,res,next){
 });
 
 //event unregistration -> /events/unregister/:event_id
-router.get('/unregister/:event_id',function(req,res,next){
+router.put('/unregister/:event_id',function(req,res,next){
   var user = req.session.user;
   console.log(user);
   Events.findOneAndUpdate({event_id:req.params.event_id},{$pull:{users:user._id}},{new:true},function(err,foundevent){
