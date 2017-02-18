@@ -37,9 +37,11 @@ router.post('/register', function(req, res, next) {
     newUser.save(function(err) {
         if (err) {
             return console.log(err.stack);
+        }else{
+          req.session.user = newUser;
+          console.log(newUser);
+          res.redirect('/')
         }
-        req.session.user = newUser;
-        res.json(newUser);
     });
 });
 
@@ -54,7 +56,8 @@ router.get('/verify/:id', function(req, res, next) {
         foundUser.save(function(err) {
             if (err) return console.log(err);
             req.session.user = foundUser;
-            res.json(foundUser);
+            console.log(foundUser);
+            res.redirect('/')
         });
     });
 });
@@ -85,7 +88,8 @@ router.post('/login', function(req, res, next) {
                 req.session.user = foundUser;
                 console.log(req.session.user._id + " is the user id");
                 console.log(req.session.user.name+ " is the User");
-                res.json(foundUser);
+                console.log(foundUser);
+                res.redirect('/')
             } else {
                 foundUser = {}
                 res.send(foundUser);
