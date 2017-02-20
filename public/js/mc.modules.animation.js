@@ -990,7 +990,7 @@ $(window).load(function(){
       	});
         var thumbsHolder = $('#slideshow-thumbs');
 		var val = -Math.abs(thumbsHolder.width() - get_OffsetWidth()) / 2;
-        thumbsHolder.attr("style", "margin-left:" + val + "px; bottom: -84px; visibility: invisible;");
+        thumbsHolder.attr("style", "margin-left:" + val + "px; bottom: -84px; display: none;");
         if(touchDevice == 1){
                $('.horizontal-fix-slideshow-thumbs').css( "width", 999999 );
     		   $('#slideshow-thumbs-container').css("width",  $('#slideshow-thumbs-container').width() );
