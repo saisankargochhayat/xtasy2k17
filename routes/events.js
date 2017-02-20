@@ -14,9 +14,11 @@ router.get('/:event_id',function(req,res,next){
 });
 
 //event creation-only for admin page -> /events/create/:event_id
-router.post('/create/:event_id',function(req,res,next){
+
+router.post('/create',function(req,res,next){
   var event = new Events({
-    event_id : req.params.event_id
+    name: req.body.name,
+    event_id : req.body.event_id
   });
   event.save(function(err){
     if(err) return console.log(err.stack);
