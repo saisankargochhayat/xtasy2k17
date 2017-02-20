@@ -9,7 +9,7 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
 
-	<title>Events | Xtasy 2017 </title>
+	<title>About Us | Synergy - Responsive and Interactive HTML Portfolio </title>
 
 	<meta name="description" content="" />
 	<meta name="author" content="MEDIACREED.COM" />
@@ -67,7 +67,7 @@
         <div class="menu-content-holder"><!-- start .menu-content-holder -->
             <div class="menu-background"></div>
             <div id="template-logo" class="template-logo" data-href="#portfolio.html"></div>
-            <div id="template-menu" class="template-menu" data-current-module-type="full_width_gallery" data-side="none" data-href="#full_width_gallery.html"><!-- start #template-menu -->
+            <div id="template-menu" class="template-menu" data-current-module-type="text_page" data-side="height" data-href="#about_us.html"><!-- start #template-menu -->
                 <div class="menu-option-holder">
                     <div class="menu-option-background"> </div>
                     <div class="menu-option-text">
@@ -241,81 +241,45 @@
     </div><!-- end #menu-container -->
 
     <div id="module-container"><!-- start #module-container -->
-        <div id="module-background-holder">
-            <div id="module-background-solid1" class="opacity_0"></div>
+        <div id="module-background-holder" data-time="4">
+        	<img src="assets/media/about_us/about_us/backgroundAboutUs.jpg" onload="animateModuleBackground(this)" class="module-background" id="module-background" alt="" />
+			<div data-src="assets/media/about_us/about_us/backgroundAboutUs3.jpg"></div>
+            <div data-src="assets/media/about_us/about_us/backgroundAboutUs2.jpg"></div>
         </div>
         <div id="module-container-holder" class="module-position-lc"  data-id="module-position-lc">
-            <div id="module-full-width-gallery"  class="module-full-width-gallery " > <!-- .shadow-side-all-->
-                <div id="module-full-width-holder">
-                    <div class="full-width-item">
-                    	<img src="images/goonj.jpg" class="opacity_0" onload="animateThumb(this)" alt=""  />
-                        <div id="thumb-image-hover" class="hover-default">
-                            <div class="background opacity_6"></div>
-                            <div class="zoom-gallery"></div>
-                            <div class="item-title"><p>Star Nite</p></div>
+            <div id="module-text-page" class="module-about-us">
+            	<div id="module-wrapper">
+                    <div id="module-text-page-holder-about-us">
+                        <div class="title-holder">
+                        	<span class="title-text_normal">AMIT MISHRA</span>
+                        </div>
+                        <div class="custom-separator"></div>
+                    	<!-- ONLY FOR MOBILE( used as back-up) :
+
+                            Set 'data-img-touch' bellow as a back-up(when using GIF)
+							Beacause GIF don't play on iPhone so you can show an alternative JPG image.
+
+                            If you don't use GIF's then please disregard this comment!
+                        -->
+                    	<div class="media-holder" data-img-touch="assets/media/about_us/about_us/about_image.jpg">
+
+                            <!-- YOU CAN USE animated GIF. Just replace the <img> src with a GIF -->
+                      <img src="assets/media/goonj.jpg" width="100%" class="opacity_0" onload="animateThumb(this)"/>
+                        </div>
+                  <!--      <div class="custom-separator"></div> -->
+                        <div class="main-text-holder">
+                        	<p>You have heard BULLEYA many a time but how about having the singer sing for you in person!
+Watch this little clip, let it hold your breath, as more posts come up for XTASY 2K17.
+This year we bring for you the voice behind Manma Emotion Jaage Re and Sau Tarah Ke.</p>
                         </div>
                     </div>
-
-
                 </div>
             </div>
-
+            <div id="module-scrollbar-holder">
+                <div id="module-scrollbar-background" class="opacity_4"></div>
+                <div id="module-scrollbar-dragger"></div>
+            </div>
         </div>
-        <div id="module-scrollbar-holder_v2">
-            <div id="module-scrollbar-background" class="opacity_8"></div>
-            <div id="module-scrollbar-dragger"></div>
-        </div>
-
-        <div id="full-width-preview"><!-- start .full-width-preview" -->
-            <div class="full-width-preview-background opacity_9_7"></div>
-            <div id="full-width-preview-media-holder">
-                <div class="full-width-preview-media-holder-background opacity_0"></div>
-                <div class="full-width-preview-media-loader"></div>
-                <div id="preview-media-holder">
-					<!--<div id="link" data-url="http://www.google.com" data-target="_blank"></div>-->
-                    <div id="preview-media-image" data-url="images/goonj.jpg" data-title="Custom Title 1" data-alt="Custom Alt 1"></div>
-
-
-                </div>
-            </div>
-            <div class="preview-arrow-close">
-                <div class="preview-arrow-backg opacity_2"></div>
-                <div class="preview-arrow-close-sign"></div>
-            </div>
-            <div class="preview-arrow-backward">
-                <div class="preview-arrow-backg opacity_2"></div>
-                <div class="preview-arrow-backward-sign"></div>
-            </div>
-            <div class="preview-arrow-forward">
-                <div class="preview-arrow-backg opacity_2"></div>
-                <div class="preview-arrow-forward-sign"></div>
-            </div>
-			<div class="preview-smartphone-info">
-                <div class="preview-smartphone-info-backg opacity_1"></div>
-                <span class="show_info">SHOW INFO</span>
-                <span class="hide_info">HIDE INFO</span>
-            </div>
-            <div id="full-width-preview-info-holder" class="module-position-rc">
-                <div id="full-width-info-container" class="full-width-info-container shadow-side-left">
-                    <div class="full-width-info-holder">
-                        <div class="full-width-info-holder-desc">
-                            <p>Star Nite</p>
-                            <div class="custom-separator"></div>
-                            <span>The ultimate day of frolicking deserves to end on an all time high which is why we have a star for you in our
-
-midst. So, turn up the heat, get the loudspeakers blaring and enter into an unreal realm as our star hypnotises
-
-with you with his unmatched charisma.</span>
-														<!--<div> <input type="button" id="regi" value="REGISTER" align="right" class="custom-separator"></input></div>-->
-						</div>
-
-
-
-
-                    </div>
-                </div>
-            </div>
-        </div><!-- end .full-width-preview" -->
     </div><!-- end #module-container -->
 </div>
 
