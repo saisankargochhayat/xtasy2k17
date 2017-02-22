@@ -9,7 +9,7 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
 
-	<title>Events | Xtasy 2017 </title>
+	<title>Gallery | Xtasy-2k17 </title>
 
 	<meta name="description" content="" />
 	<meta name="author" content="MEDIACREED.COM" />
@@ -59,7 +59,6 @@
 </head>
 
 <body>
-
 <div class="main-template-loader"></div>
 
 <div id="template-wrapper">
@@ -67,7 +66,7 @@
         <div class="menu-content-holder"><!-- start .menu-content-holder -->
             <div class="menu-background"></div>
             <div id="template-logo" class="template-logo" data-href="#portfolio.html"></div>
-            <div id="template-menu" class="template-menu" data-current-module-type="full_width_gallery" data-side="none" data-href="#full_width_gallery.html"><!-- start #template-menu -->
+            <div id="template-menu" class="template-menu" data-current-module-type="gallery" data-side="none" data-href="#image_gallery.html"><!-- start #template-menu -->
                 <div class="menu-option-holder">
                     <div class="menu-option-background"> </div>
                     <div class="menu-option-text">
@@ -242,40 +241,28 @@
 
     <div id="module-container"><!-- start #module-container -->
         <div id="module-background-holder">
-            <div id="module-background-solid1" class="opacity_0"></div>
+            <!--<div id="module-background-solid1" class="opacity_0"></div>-->
+        	<img src="assets/backg/bck-04.jpg" onload="animateModuleBackground(this)" class="module-background" id="module-background" alt="" />
         </div>
-        <div id="module-container-holder" class="module-position-lc"  data-id="module-position-lc">
-            <div id="module-full-width-gallery"  class="module-full-width-gallery " > <!-- .shadow-side-all-->
-                <div id="module-full-width-holder">
-                    <div class="full-width-item">
-                    	<img src="images/reflex.jpg" class="opacity_0" onload="animateThumb(this)" alt=""  />
-                        <div id="thumb-image-hover" class="hover-default">
-                            <div class="background opacity_6"></div>
-                            <div class="zoom-gallery"></div>
-                            <div class="item-title"><p>The Chosen One</p></div>
+        <div id="module-container-holder" class="module-position-cc"  data-id="module-position-cc">
+            <div id="module-galleries"  class="module-galleries " > <!-- .shadow-side-all-->
+            	<div id="module-galleries-holder">
+                	<div class="thumb-holder">
+                    	<div class="thumb-image">
+                        	<img src="assets/media/sponsors/2.jpg" width="220" height="180" class="opacity_0" onload="animateThumb(this)" alt=""  />
+                            <div id="thumb-image-hover" class="hover-default">
+                                <div class="background opacity_6"></div>
+                                <div class="zoom-gallery"></div>
+                            </div>
+
+                        </div>
+                        <div class="thumb-tag">
+                        	<p>Giuseppe</p>
                         </div>
                     </div>
-										<div class="full-width-item">
-                    	<img src="images/reflex.jpg" class="opacity_0" onload="animateThumb(this)" alt=""  />
-                        <div id="thumb-image-hover" class="hover-default">
-                            <div class="background opacity_6"></div>
-                            <div class="zoom-gallery"></div>
-                            <div class="item-title"><p>Kala Manch – Theatre</p></div>
-                        </div>
-                    </div>
-                    <div class="full-width-item">
-                    	<img src="images/nukad.jpg" class="opacity_0" onload="animateThumb(this)" alt=""  />
-                        <div id="thumb-image-hover" class="hover-default">
-                            <div class="background opacity_6"></div>
-                            <div class="zoom-gallery"></div>
-                            <div class="item-title"><p>Pukaar - Nukkad Natak Event</p></div>
-                        </div>
-                    </div>
-
-
-
 
                 </div>
+                <!--<div id="galleries-background" class="opacity_8"></div>-->
             </div>
 
         </div>
@@ -283,166 +270,32 @@
             <div id="module-scrollbar-background" class="opacity_8"></div>
             <div id="module-scrollbar-dragger"></div>
         </div>
-
-        <div id="full-width-preview"><!-- start .full-width-preview" -->
-            <div class="full-width-preview-background opacity_9_7"></div>
-            <div id="full-width-preview-media-holder">
-                <div class="full-width-preview-media-holder-background opacity_0"></div>
-                <div class="full-width-preview-media-loader"></div>
-                <div id="preview-media-holder">
-					<!--<div id="link" data-url="http://www.google.com" data-target="_blank"></div>-->
-                    <div id="preview-media-image" data-url="images/reflex.jpg" data-title="Custom Title 1" data-alt="Custom Alt 1"></div>
-										<div id="preview-media-image" data-url="images/reflex.jpg" data-title="Custom Title 2" data-alt="Custom Alt 2"></div>
-										<div id="preview-media-image" data-url="images/nukad.jpg" data-title="Custom Title 1" data-alt="Custom Alt 1"></div>
-
-
+        <div id="module-galleries-preview">
+            <div id="module-galleries-preview-background" class="opacity_9"></div>
+            <div class="gallery-preview-media-loader"></div>
+            <div id="preview-media-holder">
+				<!--<div id="link" data-url="http://www.google.com" data-target="_blank"></div>-->
+                <div id="preview-media-image" data-url="assets/media/sponsors/2.jpg" data-title="Custom Title 1" data-alt="Custom Alt 1">
 
                 </div>
-            </div>
-            <div class="preview-arrow-close">
-                <div class="preview-arrow-backg opacity_2"></div>
-                <div class="preview-arrow-close-sign"></div>
-            </div>
-            <div class="preview-arrow-backward">
-                <div class="preview-arrow-backg opacity_2"></div>
-                <div class="preview-arrow-backward-sign"></div>
-            </div>
-            <div class="preview-arrow-forward">
-                <div class="preview-arrow-backg opacity_2"></div>
-                <div class="preview-arrow-forward-sign"></div>
-            </div>
-			<div class="preview-smartphone-info">
-                <div class="preview-smartphone-info-backg opacity_1"></div>
-                <span class="show_info">SHOW INFO</span>
-                <span class="hide_info">HIDE INFO</span>
-            </div>
-            <div id="full-width-preview-info-holder" class="module-position-rc">
-                <div id="full-width-info-container" class="full-width-info-container shadow-side-left">
-                    <div class="full-width-info-holder">
-                        <div class="full-width-info-holder-desc">
-                            <p>The Chosen One</p>
-                            <div class="custom-separator"></div>
-                            <span>The sole Acting God. Do you have what it takes to get that title. Rhapsodize and
-															win all hearts, all alone. Get the most irrational and erratic idea and taze the
-															audience with it. Fiddle with the hearts and minds of the audience and give
-															them a piece of art to gorge on.
-															<div>
-															<div id="rule"> Rules and Regulations</div>
-															<ol>
-															<li>TEAM SIZE (1 member + 1 CA(for sound if required))</li>
-															<li>TIME LIMIT (3-5) minutes (Empty to Empty Stage)</li>
-															<li>JUDGING CRITERIA</li>
-															Acting, Script and Audience interaction
-														</ol>
-													</div>
-													<div>
-															<div id="rule">Rules</div>
-															<p><ol>
-																<li>Performance should be in Odia, Hindi or English language.</li>
-																<li>Time limit should be strictly followed.</li>
-																<li>Obscenity (at the discretion of the judges) of any kind is not allowed and will lead to
-																	immediate disqualification.</li>
-																<li>Participants will be provided a laptop and are expected to appoint someone to sit and
-																	play during performance.</li>
-																<li>The decision of the judges are final and binding.</li>
-															</ol>
-														</div>
-														<div id="rule">Prize Money</div>
-															<ul><li>Rs 3000/- (Winner)</li>
-															<li>Citation (Runner-up)</li></ul>
-															</span>
-														<!--<div> <input type="button" id="regi" value="REGISTER" align="right" class="custom-separator"></input></div>-->
-						</div>
 
-                        <div class="full-width-info-holder-desc">
-                            <p>Kala Manch – Theatre</p>
-                            <div class="custom-separator"></div>
-                            <span>Whole world is a stage, they say. For people who believe in this quote, for people who have
-															dramatics as a passion, and an obsession, we present Kalamanch, the inter-collegiate stage
-															play competition. Teams need to excel in all departments like, acting, script, direction, sets
-															to impress the audience and the esteemed judges to win one of the competitive events of
-															Xtasy.
-															<div id="rule">Rules & Regulations</div>
-															<ol>
-															<li>TEAM SIZE (max of 25) Members</li>
-															<li>TIME LIMIT (max of 40) minutes (Empty to Empty Stage)</li>
-															<li>JUDGING CRITERIA :
-															Screenplay, Direction, Script, Acting and Overall Impact.</li>
-															<li><ol type='a'>PRODUCTION MATERIAL PROVIDED</li>
-															<li>4 chairs, 2 tables.</li>
-															<li>Any other production material has to be brought by the teams themselves but the
-															organizers hold the discretion of allowing its inclusion on stage.</li>
-														</ol>
-													</ol>
-															<div id="rule">Rules:</div>
-															<ol>
-																<li>Performance should be in Hindi or English or both. However short sub-passages in
-															other languages are allowed.</li>
-															<li>Stage Play comprises of multiple scenes and may have blackouts.</li>
-															<li>Backstage voiceovers and narrations are allowed during the performance.</li>
-															<li>Pre-recorded music is allowed and should be brought in a CD/DVD or a pen drive in
-															.mp3 format only.</li>
-															<li>Participants will be provided with a laptop and are expected to appoint someone to
-															operate the laptop during the performance.</li>
-															<li>Any kind of fluid, flame, live animals, heavy objects or any kind of material that
-															damages the stage is strictly NOT allowed and may lead to disqualification.</li>
-															<li>The judge&#39;s decision will be final and binding. </li>
-															<li>The organizing team reserves the right to change or modify any of the rules.</li>
-														</ol>
-														<div id="rule">Prize Money</div>
-														<ul><li> Rs 12000/- (Winner)</li>
-															<li>Citation (Runner-up)</li></ul>
-															<div id="rule">Preferable Time Slot</div> 10:00 pm to 2:00 pm (Orientation Hall)</span>
-							<!--<div> <input type="button" id="regi" value="REGISTER" align="right" class="custom-separator"></input></div>-->
-						</div>
-						<div class="full-width-info-holder-desc">
-								<p>Pukaar - Nukkad Natak Event</p>
-								<div class="custom-separator"></div>
-								<span>Xtasy brings to you right from the streets, a loud and larger than life exchange of
-									ideologies with drama full of drums, catchy songs, humour, energy, emotions and the roar
-									of audience. Nukkad Natak as a form of communication is deeply rooted in the Indian
-									tradition. It breaths the formal barriers and approaches the people directly in order to
-									bring upon change for the good. This Xtasy come and convey a social or political message
-									in an entertaining environment and giving inspiring performances.
-									<div id="rule">Rules & Regulations</div>
-									<ol>
-										<li>TEAM SIZE (10-20) Members (Including Music Accompanists)</li>
-									<li>TIME LIMIT (10-25) minutes (Empty to Empty Stage)</li>
-									<li>JUDGING CRITERIA :
-									Acting, Voice (sync, modulation, diction) , Screenplay, Script, Crowd interaction and overall
-									impact.</li>
-								</ol>
-								<div id="rule">Rules:</div>
-									<ol><li>The team size represents the number of people registered as a team.</li>
-									<li>No electrical appliances shall be allowed during the performance, whether inside or
-									outside the circle of performance.</li>
-									<li>Only live music is allowed. Teams need to bring their own instruments.</li>
-									<li>Language of the performance should be Hindi/English or both. However short sub
-									passages in other languages are allowed.</li>
-									<li>Any kind of fluid, live animals, flame, heavy object or any material which has a
-									possibility of damaging the stage is not allowed.</li>
-									<li>Teams will be penalised if they exceed the time limit.</li>
-									<li>Plays can be based on any theme but since performance is being held at public venues,
-									any content directed against a certain political group or religious community is strictly
-									prohibited.</li>
-									<li>Obscenity (at the discretion of judges) of any kind is not allowed and may lead to
-									disqualification.</li>
-									<li>Any kind of plagiarism and profanity will lead to immediate disqualification.</li>
-									<li>The decision of the judges will be final and binding.</li>
-									<li>Audience response will have substantial points in scoring criteria.</li>
-								</ol>
-								<div id="rule">Prize Money</div>
-									<ul><li>Rs 15000/- (Winner)</li>
-									<li>Citation (Runner-up)</li></ul>
-									<div id="rule">Preferable Time Slot</div> 1:00 pm to 4:00 pm (Academic Block Enclosure)</span>
-								<!--<div> <input type="button" id="regi" value="REGISTER" align="right" class="custom-separator"></input></div>-->
-</div>
-
-
-                    </div>
-                </div>
             </div>
-        </div><!-- end .full-width-preview" -->
+            <div class="module-galleries-preview-arrow-close">
+                <div class="module-galleries-preview-arrow-backg opacity_2"></div>
+                <div class="module-galleries-preview-arrow-close-sign"></div>
+            </div>
+            <div class="module-galleries-preview-arrow-backward">
+                <div class="module-galleries-preview-arrow-backg opacity_2"></div>
+                <div class="module-galleries-preview-arrow-backward-sign"></div>
+            </div>
+            <div class="module-galleries-preview-arrow-forward">
+                <div class="module-galleries-preview-arrow-backg opacity_2"></div>
+                <div class="module-galleries-preview-arrow-forward-sign"></div>
+            </div>
+            <div id="module-galleries-preview-description-holder">
+                <div id="module-galleries-preview-description-background"></div>
+            </div>
+        </div>
     </div><!-- end #module-container -->
 </div>
 
