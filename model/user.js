@@ -45,6 +45,9 @@ var userSchema = mongoose.Schema({
     is_verified: {
         type: Boolean,
         default: false
+    },
+    verification_hash: {
+      type: String
     }
     // basearea : {type:String,required:true},
     // conquered : Array,

@@ -14,20 +14,22 @@ logout
 
 User account verification
   method: get
-  uri : "/users/verify/:id"
+  uri : "/users/verify/:email/:hash"
   where ':id' is the value of _id field of the user's document in database
 
 event creation in db(for admin page)
-  method: get
-  uri: "/events/create/:event_id" where ':event_id' will be the unique id of the event
+  method: post
+  uri: "/events/create"
+  parameters: 'event_id','name'
+  where 'event_id' will be the unique id of the event
   set by the admin.
 
 event registration
-  method: get
+  method: put
   uri : "/events/register/:event_id"
 
 event unregistration
-  method: get
+  method: put
   uri : "/events/unregister/:event_id"
 
 get an event document
