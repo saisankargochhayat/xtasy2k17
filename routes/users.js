@@ -13,6 +13,24 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/pass',function(req,res,next){
+  var event_dict = {
+    '1':"Prove ur move",
+    '2':"Salsa Workshop",
+    '3':"The Daning Feat",
+    '4':"Burnout",
+    '5':"The Chosen One",
+    '6':"Kalamanch",
+    '7':"Pukaar",
+    '8': "Goonj",
+    '9': "Karaoke",
+    '10': "War of Bands",
+    '11': "Sp-ent and India Quiz",
+    '12': "Broadcast",
+    '13': "I-Kavi",
+    '14': "Terribly Tiny Tales",
+    '15': "Amit Mishra Live",
+    '16': "Zephyrtone Live",
+  }
   res.render('pass',{user:req.session.user});
 });
 
