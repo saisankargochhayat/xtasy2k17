@@ -23,7 +23,18 @@ router.post('/register', function(req, res, next) {
 
     if(!validator.validate(req.body.email))
       return res.redirect('/?msg=invalid email address');
-
+      if(req.body.college == 1){
+        req.body.college = "CET-BBSR"
+      }
+      if(req.body.college == 2){
+        req.body.college = "IGIT-Sarang"
+      }
+      if(req.body.college == 3){
+        req.body.college = "ITER"
+      }
+      if(req.body.college == 4){
+        req.body.college = req.body.other_college
+      }
     var newUser = new user({
         name: req.body.name,
         password: req.body.password,
