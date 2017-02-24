@@ -31,7 +31,12 @@ router.get('/pass',function(req,res,next){
     '15': "Amit Mishra Live",
     '16': "Zephyrtone Live",
   }
-  res.render('pass',{user:req.session.user,dict:event_dict});
+  console.log(req.session.user._id);
+  user.findOne({_id:mongoose.Types.ObjectId(req.session.user._id)},function(err,foundUser){
+    if(err) return console.log(err);
+    req.session.user = foundUser;
+    res.render('pass',{user:req.session.user,dict:event_dict});
+  });
 });
 
 

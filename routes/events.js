@@ -46,8 +46,9 @@ router.get('/register/:event_id',authenticate,function(req,res,next){
        res.send("There was some Problem with the Registration. Please try again later")
     }
     if(!foundevent) return res.send("Event not found");
-    Users.update({_id:mongoose.Types.ObjectId(user._id)},{$addToSet:{events:req.params.event_id}},function(err){
+    Users.findOneAndUpdate({_id:mongoose.Types.ObjectId(user._id)},{$addToSet:{events:req.params.event_id}},{new:true},function(err,foundUser){
       if(err) return console.log(err);
+      console.log(foundUser);
     });
     res.send("Succesfully Registered for the event")
   });
