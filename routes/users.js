@@ -16,6 +16,7 @@ router.get('/', function(req, res, next) {
 //register form action/url -> /users/register
 router.post('/register', function(req, res, next) {
     // console.log(validator.validate(req.body.email));
+    console.log(req.body.email);
     if((!req.body.email)||(!req.body.name)||(!req.body.password)
       ||(!req.body.college)||(!req.body.year)||(!req.body))
       return res.redirect('/?msg=invalid signup');
@@ -33,6 +34,7 @@ router.post('/register', function(req, res, next) {
         gender: req.body.gender,
         verification_hash: md5(req.body.email+(Math.random()*(1000-1)+1000))
     });
+    console.log("here");
 
     var transporter = nodemailer.createTransport({
       service:'gmail',
@@ -41,6 +43,8 @@ router.post('/register', function(req, res, next) {
         pass:'yvzieleknhnjyusu'
       }
     });
+    console.log("here");
+
 
     var mailOptions = {
       from : "rishav.159@gmail.com",
@@ -48,7 +52,8 @@ router.post('/register', function(req, res, next) {
       subject : "Account verification for XTASY 2k17",
       html : 'Thank you for registering in Xtasy, the annual Cultural Fest of CET, Bhubaneswar. Verify your account by clicking <a href="http://localhost:3000/users/verify/'+newUser.email+'/'+newUser.verification_hash+'">here.</a>'
     }
-    
+
+    console.log("here");
     transporter.sendMail(mailOptions,function(error,info){
       if(error){
         return console.log(error);
