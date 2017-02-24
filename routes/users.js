@@ -23,7 +23,18 @@ router.post('/register', function(req, res, next) {
 
     if(!validator.validate(req.body.email))
       return res.redirect('/?msg=invalid email address');
-
+      if(req.body.college == 1){
+        req.body.college = "CET-BBSR"
+      }
+      if(req.body.college == 2){
+        req.body.college = "IGIT-Sarang"
+      }
+      if(req.body.college == 3){
+        req.body.college = "ITER"
+      }
+      if(req.body.college == 4){
+        req.body.college = req.body.other_college
+      }
     var newUser = new user({
         name: req.body.name,
         password: req.body.password,
@@ -39,21 +50,19 @@ router.post('/register', function(req, res, next) {
     var transporter = nodemailer.createTransport({
       service:'gmail',
       auth:{
-        user:'rishav.159@gmail.com',
-        pass:'yvzieleknhnjyusu'
+        user:'register.xtasy@gmail.com',
+        pass:'sjferawvfccktwhn'
       }
     });
-    console.log("here");
 
 
     var mailOptions = {
-      from : "rishav.159@gmail.com",
+      from : "register.xtasy@gmail.com",
       to : newUser.email,
       subject : "Account verification for XTASY 2k17",
       html : 'Thank you for registering in Xtasy, the annual Cultural Fest of CET, Bhubaneswar. Verify your account by clicking <a href="http://localhost:3000/users/verify/'+newUser.email+'/'+newUser.verification_hash+'">here.</a>'
     }
 
-    console.log("here");
     transporter.sendMail(mailOptions,function(error,info){
       if(error){
         return console.log(error);
@@ -77,7 +86,6 @@ router.post('/register', function(req, res, next) {
         if (err) {
             return console.log(err.stack);
         }else{
-          req.session.user = newUser;
           console.log(newUser);
           res.redirect('/#login.html?msg=Check your email to verify!');
         }

@@ -9,7 +9,7 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
 
-	<title>Philosophy | Synergy - Responsive and Interactive HTML Portfolio </title>
+	<title>Register | Xtasy-2k17 </title>
 
 	<meta name="description" content="" />
 	<meta name="author" content="MEDIACREED.COM" />
@@ -281,41 +281,42 @@
                                 <p><input type="password" name="password" placeholder="Password"></p>
                                 <div style="padding-left:12px;" class="input-group" required="">
                                         <span class="radio-inline">
-                                              <input type="radio" name="gender" id="inlineRadio1" value="male"> Male
+                                              <input style="display:inline;width:10%;" type="radio" name="gender" id="inlineRadio1" value="male"> Male
 																						</span>
 																						<span class="radio-inline">
-                                              <input type="radio" name="gender" id="inlineRadio2" value="female"> Female
+                                              <input style="display:inline;width:10%;" type="radio" name="gender" id="inlineRadio2" value="female"> Female
                                         </span>
                                 </div>
                                 <p>
                                     <p class="input-group">
                                     <label>College:</label>
-                                        <select class="form-control parsley-validated" required="" value="Fill In Your College Name" name="college">
+                                        <select onchange = 'update_other()'id='college'class="form-control parsley-validated" required="" value="Fill In Your College Name" name="college">
                                           <option></option>
                                           <option value="1">College Of Engineering And Technology, Bhubaneswar</option>
-                                          <option value="4">--Other--</option>
-
-                                          <option value="2">IGIT</option>
-                                          <option value="3">ITR</option>
+                                          <option value="2">IGIT Sarang</option>
+                                          <option value="3">ITER</option>
+																					<option value="4">--Other--</option>
                                         </select>
-                                       
+
                                     </p>
-                                    <p><input type="text" name="Other-clg" placeholder="If Others, enter college name"></p>
+                                    <p id='others' style="display:none"><input type="text" name="other_college" placeholder="If Others, enter college name"></p>
                                     <div id="select-error"></div>
                                 </p>
+
                                 <p>
-                                <label>Year Of Study:</label><br>
+
+                                <label>Year Of Study:</label><br><br>
                                         <label class="radio-inline">
-                                          <input type="radio" name="year" id="inlineRadio1" value="1st"> 1st Year
+                                          <input style="display:inline;width:10%;"type="radio" name="year" id="inlineRadio1" value="1st"> 1st Year
                                         </label>
                                         <label class="radio-inline">
-                                          <input type="radio" name="year" id="inlineRadio2" value="2nd"> 2nd Year
+                                          <input style="display:inline;width:10%;"type="radio" name="year" id="inlineRadio2" value="2nd"> 2nd Year
                                         </label>
                                         <label class="radio-inline">
-                                          <input type="radio" name="year" id="inlineRadio3" value="3rd"> 3rd Year
+                                          <input style="display:inline;width:10%;"type="radio" name="year" id="inlineRadio3" value="3rd"> 3rd Year
                                         </label>
                                         <label class="radio-inline">
-                                          <input type="radio" name="year" id="inlineRadio3" value="4th" required="" class="parsley-validated"> 4th Year
+                                          <input style="display:inline;width:10%;"type="radio" name="year" id="inlineRadio3" value="4th" required="" class="parsley-validated"> 4th Year
                                         </label>
                                 </p>
 
