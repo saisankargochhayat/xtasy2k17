@@ -5,7 +5,18 @@ var express = require('express'),
   Users = require('../model/user');
 
 //get the event document -> /events/:event_id
-router.get('/:event_id',function(req,res,next){
+var authenticate = function(req,res,next){
+  if(req.session){
+    if(req.session.user){
+      next()
+    }else{
+      res.send("Please Login to register for event")
+    }
+  }else{
+    res.send("Please Login to register for event")
+  }
+}
+router.get('/:event_id',authenticate,function(req,res,next){
     Events.findOne({event_id:req.params.event_id},function(err,foundEvent){
       if(err) return console.log(err);
       if(!foundEvent) return res.end("event not found");
@@ -26,30 +37,36 @@ router.post('/create',function(req,res,next){
 });
 
 //event registration -> /events/register/:event_id
-router.put('/register/:event_id',function(req,res,next){
+router.get('/register/:event_id',authenticate,function(req,res,next){
   var user = req.session.user;
   console.log(user);
   Events.findOneAndUpdate({event_id:req.params.event_id},{$addToSet: {users:user._id}},{new:true},function(err,foundevent){
-    if(err) return console.log(err);
-    if(!foundevent) return res.end("event not found");
+    if(err){
+       console.log(err);
+       res.send("There was some Problem with the Registration. Please try again later")
+    }
+    if(!foundevent) return res.send("Event not found");
     Users.update({_id:mongoose.Types.ObjectId(user._id)},{$addToSet:{events:req.params.event_id}},function(err){
       if(err) return console.log(err);
     });
-    res.json(foundevent);
+    res.send("Succesfully Registered for the event")
   });
 });
 
 //event unregistration -> /events/unregister/:event_id
-router.put('/unregister/:event_id',function(req,res,next){
+router.get('/unregister/:event_id',authenticate,function(req,res,next){
   var user = req.session.user;
   console.log(user);
   Events.findOneAndUpdate({event_id:req.params.event_id},{$pull:{users:user._id}},{new:true},function(err,foundevent){
-    if(err) return console.log(err);
-    if(!foundevent) return res.end("event not found");
+    if(err){
+       console.log(err);
+       res.send("There was some Problem with the Registration. Please try again later")
+    }
+    if(!foundevent) return res.end("Event not found");
     Users.update({_id:mongoose.Types.ObjectId(user._id)},{$pull:{events:req.params.event_id}},function(err){
       if(err) return console.log(err);
     });
-    res.json(foundevent);
+    res.send("Succesfully Unregistered for the event")
   });
 });
 

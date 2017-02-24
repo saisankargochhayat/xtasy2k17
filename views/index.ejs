@@ -464,6 +464,17 @@
           }
         }
     </script>
+    <script type="text/javascript">
+      var register = function(eid){
+        $.ajax({
+          url:'/events/register/'+eid,
+          method:'GET',
+          success:function(data){
+            $('#'+eid+'_msg').html(data)
+          }
+        })
+      }
+    </script>
 </body>
 
 </html>
