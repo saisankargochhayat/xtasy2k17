@@ -75,7 +75,6 @@ router.post('/register', function(req, res, next) {
         if (err) {
             return console.log(err.stack);
         }else{
-          req.session.user = newUser;
           console.log(newUser);
           res.redirect('/')
         }
@@ -129,10 +128,10 @@ router.post('/login', function(req, res, next) {
                 console.log(req.session.user._id + " is the user id");
                 console.log(req.session.user.name+ " is the User");
                 console.log(foundUser);
-                res.render('index',{user:req.session.user});
+                res.redirect('/');
             } else {
-                foundUser = {}
-                res.send(foundUser);
+
+                res.redirect('/#login.html');
             }
         });
     });

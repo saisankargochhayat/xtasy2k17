@@ -78,6 +78,26 @@
                 <div id="template-menu" class="template-menu" data-current-module-type="full_width_gallery" data-side="none" data-href="#home_layout_1.html">
                     <!-- start #template-menu -->
 
+<% if(typeof name == 'undefined'){%>
+                    <div class="menu-option-holder" data-module-type="text_page" data-side="none" style=''>
+                        <div class="menu-option-background"></div>
+                        <div class="menu-option-text"><a href="#login.html" data-path-href="html/login/">LOGIN</a></div>
+                    </div>
+
+                    <div class="menu-option-holder" data-module-type="text_page" data-side="none" style=''>
+                        <div class="menu-option-background"></div>
+                        <div class="menu-option-text"><a href="#redg.html" data-path-href="html/redg/">REGISTER</a></div>
+                    </div>
+<%}else{%>
+                    <div class="menu-option-holder" data-module-type="text_page" data-side="none" style=''>
+                        <div class="menu-option-background"></div>
+                        <div class="menu-option-text"><a href="#" data-path-href="">WELCOME <%=name%></a></div>
+                    </div>
+                    <div class="menu-option-holder" data-module-type="text_page" data-side="none" style=''>
+                        <div class="menu-option-background"></div>
+                        <div id='logout' class="menu-option-text"><a href="/users/logout" data-path-href="">LOGOUT</a></div>
+                    </div>
+<%}%>
                     <div class="menu-option-holder" data-module-type="slideshow" data-side="height">
                         <div id="menu-option-background" class="menu-option-background"> </div>
                         <div id="menu-option-text" class="menu-option-text"><a href="#home_layout_1.html" data-path-href="html/home/">HOME</a></div>
@@ -85,6 +105,7 @@
 
                     <div class="menu-option-holder" style='display:none'>
                         <div id="menu-option-background" class="menu-option-background"> </div>
+
                         <div id="menu-option-text" class="menu-option-text">
                             <a href="#">HOME</a>
                             <div class="menu-option-sign">+</div>
@@ -267,15 +288,7 @@
                         <div id="menu-option-background" class="menu-option-background"> </div>
                         <div id="menu-option-text" class="menu-option-text"><a href="#contact.html" data-path-href="html/contact/">CONTACT US</a></div>
                     </div>
-                    <div class="menu-option-holder" data-module-type="text_page" data-side="none" style=''>
-                        <div class="menu-option-background"></div>
-                        <div class="menu-option-text"><a href="#login.html" data-path-href="html/login/">LOGIN</a></div>
-                    </div>
 
-                    <div class="menu-option-holder" data-module-type="text_page" data-side="none" style=''>
-                        <div class="menu-option-background"></div>
-                        <div class="menu-option-text"><a href="#redg.html" data-path-href="html/redg/">REGISTER</a></div>
-                    </div>
 
                     <div class="menu-option-holder" data-module-type="gallery" data-side="height">
                         <div id="menu-option-background" class="menu-option-background"> </div>
@@ -436,6 +449,11 @@
 
     <div id="console-log"></div>
     <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+    <script type="text/javascript">
+        $('#logout').click(function(){
+          window.location.href = '/users/logout'
+        })
+    </script>
 </body>
 
 </html>
