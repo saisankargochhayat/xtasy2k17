@@ -19,10 +19,10 @@ router.post('/register', function(req, res, next) {
     console.log(req.body.email);
     if((!req.body.email)||(!req.body.name)||(!req.body.password)
       ||(!req.body.college)||(!req.body.year)||(!req.body))
-      return res.redirect('/?msg=invalid signup');
+      return res.render('notify',{msg:'invalid signup',url:'/'});
 
     if(!validator.validate(req.body.email))
-      return res.redirect('/?msg=invalid email address');
+      return res.render('notify',{msg:'invalid email address',url:'/'});
       if(req.body.college == 1){
         req.body.college = "CET-BBSR"
       }
@@ -45,7 +45,6 @@ router.post('/register', function(req, res, next) {
         gender: req.body.gender,
         verification_hash: md5(req.body.email+(Math.random()*(1000-1)+1000))
     });
-    console.log("here");
 
     var transporter = nodemailer.createTransport({
       service:'gmail',
@@ -87,7 +86,7 @@ router.post('/register', function(req, res, next) {
             return console.log(err.stack);
         }else{
           console.log(newUser);
-          res.redirect('/#login.html?msg=Check your email to verify!');
+          res.render('notify',{msg:'Thank you for registering in Xtasy. Check your email to verify!',url:'/#login.html'});
         }
     });
 });
@@ -137,7 +136,7 @@ router.post('/login', function(req, res, next) {
             if (isMatch) {
                 if(foundUser.is_verified){
                   req.session.user = foundUser;
-                  res.render('profile',{user:req.session.user});
+                  res.redirect('/');
                 }
                 else{
                   res.render('notify',{msg:'Account not verified',url:'/#login.html'});
