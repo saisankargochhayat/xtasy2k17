@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 // var mailer = require('node-mailer');
+var nodemailer = require('nodemailer')
 var user = require('../model/user');
 var md5 = require('md5');
 var validator = require('email-validator');
@@ -33,6 +34,28 @@ router.post('/register', function(req, res, next) {
         verification_hash: md5(req.body.email+(Math.random()*(1000-1)+1000))
     });
 
+    var transporter = nodemailer.createTransport({
+      service:'gmail',
+      auth:{
+        user:'rishav.159@gmail.com',
+        pass:'yvzieleknhnjyusu'
+      }
+    });
+
+    var mailOptions = {
+      from : "rishav.159@gmail.com",
+      to : newUser.email,
+      subject : "Account verification for XTASY 2k17",
+      html : 'Thank you for registering in Xtasy, the annual Cultural Fest of CET, Bhubaneswar. Verify your account by clicking <a href="http://localhost:3000/users/verify/'+newUser.email+'/'+newUser.verification_hash+'">here.</a>'
+    }
+    
+    transporter.sendMail(mailOptions,function(error,info){
+      if(error){
+        return console.log(error);
+      }else{
+        console.log(info);
+      }
+    })
 
     // new mailer.Mail({
     //    from: 'noreply@domain.com',
