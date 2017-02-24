@@ -89,7 +89,7 @@
 <body>
     <div class="invoice-box">
       <div style="text-align:right;margin:0px">
-          <button onclick="print()">Print</button>
+          <button id="print" onclick="printPass()">Print</button>
       </div>
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
@@ -117,7 +117,7 @@
                                 Ghatikia, Kalinga Nagar<br>
                                 Bhubaneswar,Odisha<br>
                                 751003
-                                
+
                             </td>
 
                             <td>
@@ -140,46 +140,29 @@
                     Event Name
                 </td>
             </tr>
-               <% for(var i=0;i<user.events.length;i++)
-                    { %>
 
-            <tr class="item">
-                <td>
-                    <%= user.events[i] %>
-                </td>
+               <% for(var i=0;i<user.events.length;i++){ %>
+                 <tr class="item">
+                   <td>
+                     <%=user.events[i] %>
+                   </td>
 
-                <td>
-                    <%= dict[user.events[i]] %>
-                </td>
-            </tr>
-                   <% } %>
+                   <td>
+                     <%=dict[user.events[i]] %>
+                   </td>
+                 </tr>
+              <% } %>
 
-            <tr class="item">
-                <td>
-                    Hosting (3 months)
-                </td>
 
-                <td>
-                    $75.00
-                </td>
-            </tr>
-
-            <tr class="item last">
-                <td>
-                    Domain name (1 year)
-                </td>
-
-                <td>
-                    $10.00
-                </td>
-            </tr>
-
-           
         </table>
     </div>
 
     <script type="text/javascript">
-
+      function printPass(){
+        document.getElementById('print').style='display:none';
+        window.print();
+        document.getElementById('print').style='display:inline-block';
+      }
     </script>
 </body>
 </html>
