@@ -19,10 +19,10 @@ router.post('/register', function(req, res, next) {
     console.log(req.body.email);
     if((!req.body.email)||(!req.body.name)||(!req.body.password)
       ||(!req.body.college)||(!req.body.year)||(!req.body))
-      return res.redirect('/?msg=invalid signup');
+      return res.render('notify',{msg:'invalid signup',url:'/'});
 
     if(!validator.validate(req.body.email))
-      return res.redirect('/?msg=invalid email address');
+      return res.render('notify',{msg:'invalid email address',url:'/'});
       if(req.body.college == 1){
         req.body.college = "CET-BBSR"
       }
@@ -45,7 +45,6 @@ router.post('/register', function(req, res, next) {
         gender: req.body.gender,
         verification_hash: md5(req.body.email+(Math.random()*(1000-1)+1000))
     });
-    console.log("here");
 
     var transporter = nodemailer.createTransport({
       service:'gmail',
@@ -87,7 +86,7 @@ router.post('/register', function(req, res, next) {
             return console.log(err.stack);
         }else{
           console.log(newUser);
-          res.redirect('/')
+          res.render('notify',{msg:'Thank you for registering in Xtasy. Check your email to verify!',url:'/#login.html'});
         }
     });
 });
@@ -129,20 +128,21 @@ router.post('/login', function(req, res, next) {
             return console.log(err);
         }
         if (!foundUser) {
-            return res.redirect('/#redg.html?msg=Not registered yet');
+            return res.render('notify',{msg:'Not registered yet',url:'/#redg.html'});
         }
         // test a matching password
         foundUser.comparePassword(req.body.login_password, function(err, isMatch) {
             if (err) throw err;
             if (isMatch) {
-                req.session.user = foundUser;
-                console.log(req.session.user._id + " is the user id");
-                console.log(req.session.user.name+ " is the User");
-                console.log(foundUser);
-                res.redirect('/');
+                if(foundUser.is_verified){
+                  req.session.user = foundUser;
+                  res.redirect('/');
+                }
+                else{
+                  res.render('notify',{msg:'Account not verified',url:'/#login.html'});
+                }
             } else {
-
-                res.redirect('/#login.html');
+              res.render('notify',{msg:'Email or Password incorrect',url:'/#login.html'});
             }
         });
     });
