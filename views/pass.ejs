@@ -101,7 +101,7 @@
                             </td>
 
                             <td>
-                                <h3>Xtasy-ID #: <%=user.xtasyId%></h3><br>
+                                <h1>Xtasy-ID #: XT<%=user.xtasyId%></h1><br>
                             </td>
                         </tr>
                     </table>
@@ -140,18 +140,26 @@
                     Event Name
                 </td>
             </tr>
+            <% if(user.events.length == 0){%>
+              <tr class="item">
+                <td>
+                  Not Registered for any event
+                </td>
+              </tr>
+            <%}else{
+              for(var i=0;i<user.events.length;i++){ %>
+                <tr class="item">
+                  <td>
+                    <%=user.events[i] %>
+                  </td>
 
-               <% for(var i=0;i<user.events.length;i++){ %>
-                 <tr class="item">
-                   <td>
-                     <%=user.events[i] %>
-                   </td>
+                  <td>
+                    <%=dict[user.events[i]] %>
+                  </td>
+                </tr>
+             <%   }} %>
 
-                   <td>
-                     <%=dict[user.events[i]] %>
-                   </td>
-                 </tr>
-              <% } %>
+
 
 
         </table>
