@@ -79,7 +79,7 @@ router.post('/register', function(req, res, next) {
         }else{
           req.session.user = newUser;
           console.log(newUser);
-          res.redirect('/')
+          res.redirect('/#login.html?msg=Check your email to verify!');
         }
     });
 });
@@ -121,20 +121,21 @@ router.post('/login', function(req, res, next) {
             return console.log(err);
         }
         if (!foundUser) {
-            return res.redirect('/#redg.html?msg=Not registered yet');
+            return res.render('notify',{msg:'Not registered yet'});
         }
         // test a matching password
         foundUser.comparePassword(req.body.login_password, function(err, isMatch) {
             if (err) throw err;
             if (isMatch) {
-                req.session.user = foundUser;
-                console.log(req.session.user._id + " is the user id");
-                console.log(req.session.user.name+ " is the User");
-                console.log(foundUser);
-                res.render('index',{user:req.session.user});
+                if(foundUser.is_verified){
+                  req.session.user = foundUser;
+                  res.render('profile',{user:req.session.user});
+                }
+                else{
+                  res.render('notify',{msg:'Account not verified'});
+                }
             } else {
-                foundUser = {}
-                res.send(foundUser);
+              res.render('notify',{msg:'Email or Password incorrect'});
             }
         });
     });
