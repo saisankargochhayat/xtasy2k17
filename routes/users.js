@@ -87,7 +87,7 @@ router.post('/register', function(req, res, next) {
       from : "register.xtasy@gmail.com",
       to : newUser.email,
       subject : "Account verification for XTASY 2k17",
-      html : 'Thank you for registering in Xtasy, the annual Cultural Fest of CET, Bhubaneswar. Verify your account by clicking <a href="http://localhost:3000/users/verify/'+newUser.email+'/'+newUser.verification_hash+'">here.</a>'
+      html : 'Thank you for registering in Xtasy, the annual Cultural Fest of CET, Bhubaneswar. Verify your account by clicking <a href="https://xtasy.cetb.in/users/verify/'+newUser.email+'/'+newUser.verification_hash+'">here.</a>'
     }
 
     transporter.sendMail(mailOptions,function(error,info){
