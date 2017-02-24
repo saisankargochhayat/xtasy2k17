@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Xtasy-2k17</title>
+    <script type="text/javascript" src="js/libs/jquery-1.7.2.min.js"></script>
+
+    <style>
+    .invoice-box{
+        max-width:800px;
+        margin:auto;
+        padding:30px;
+        border:1px solid #eee;
+        box-shadow:0 0 10px rgba(0, 0, 0, .15);
+        font-size:16px;
+        line-height:24px;
+        font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color:#555;
+    }
+
+    .invoice-box table{
+        width:100%;
+        line-height:inherit;
+        text-align:left;
+    }
+
+    .invoice-box table td{
+        padding:5px;
+        vertical-align:top;
+    }
+
+    .invoice-box table tr td:nth-child(2){
+        text-align:right;
+    }
+
+    .invoice-box table tr.top table td{
+        padding-bottom:20px;
+    }
+
+    .invoice-box table tr.top table td.title{
+        font-size:45px;
+        line-height:45px;
+        color:#333;
+    }
+
+    .invoice-box table tr.information table td{
+        padding-bottom:40px;
+    }
+
+    .invoice-box table tr.heading td{
+        background:#eee;
+        border-bottom:1px solid #ddd;
+        font-weight:bold;
+    }
+
+    .invoice-box table tr.details td{
+        padding-bottom:20px;
+    }
+
+    .invoice-box table tr.item td{
+        border-bottom:1px solid #eee;
+    }
+
+    .invoice-box table tr.item.last td{
+        border-bottom:none;
+    }
+
+    .invoice-box table tr.total td:nth-child(2){
+        border-top:2px solid #eee;
+        font-weight:bold;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .invoice-box table tr.top table td{
+            width:100%;
+            display:block;
+            text-align:center;
+        }
+
+        .invoice-box table tr.information table td{
+            width:100%;
+            display:block;
+            text-align:center;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="invoice-box">
+      <div style="text-align:right;margin:0px">
+          <button id="print" onclick="printPass()">Print</button>
+      </div>
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="/images/xtasy.png" style="width:100%; max-width:220px;">
+                            </td>
+
+                            <td>
+                                <h1>Xtasy-ID #: XT<%=user.xtasyId%></h1><br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                College of Engineering and Technology<br>
+                                Ghatikia, Kalinga Nagar<br>
+                                Bhubaneswar,Odisha<br>
+                                751003
+
+                            </td>
+
+                            <td>
+                                <%=user.college%><br>
+                                <%=user.name%><br>
+                                <%=user.email%>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+
+            <tr class="heading">
+                <td>
+                    Event Id
+                </td>
+
+                <td>
+                    Event Name
+                </td>
+            </tr>
+            <% if(user.events.length == 0){%>
+              <tr class="item">
+                <td>
+                  Not Registered for any event
+                </td>
+              </tr>
+            <%}else{
+              for(var i=0;i<user.events.length;i++){ %>
+                <tr class="item">
+                  <td>
+                    <%=user.events[i] %>
+                  </td>
+
+                  <td>
+                    <%=dict[user.events[i]] %>
+                  </td>
+                </tr>
+             <%   }} %>
+
+
+
+
+        </table>
+        <h2>Guidelines for XTASY-2017</h2>
+        <div class="rules">
+          <ol>
+            <li>All students are required to complete the offline registration at the registration
+            desk immediately after entering the campus.</li>
+            <li>A print-out of this Registration slip is compulsory for offline registration.</li>
+            <li>A valid college ID Card is compulsory for offline registration.</li>
+            <li>All students are required to maintain and respect the rules and regulations of the college. Students
+            found being involved in any unethical or illegal activity will not be allowed to remain inside the campus.</li>
+            <li>All decisions taken by the student committee of CET will be final.</li>
+          </ol>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+      function printPass(){
+        document.getElementById('print').style='display:none';
+        window.print();
+        document.getElementById('print').style='display:inline-block';
+      }
+    </script>
+</body>
+</html>

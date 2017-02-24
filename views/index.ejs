@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->
@@ -79,6 +78,35 @@
                 <div id="template-menu" class="template-menu" data-current-module-type="full_width_gallery" data-side="none" data-href="#home_layout_1.html">
                     <!-- start #template-menu -->
 
+<% if(typeof name == 'undefined'){%>
+                    <div class="menu-option-holder" data-module-type="text_page" data-side="none" style=''>
+                        <div class="menu-option-background"></div>
+                        <div class="menu-option-text"><a href="#login.html" data-path-href="html/login/">LOGIN</a></div>
+                    </div>
+
+                    <div class="menu-option-holder" data-module-type="text_page" data-side="none" style=''>
+                        <div class="menu-option-background"></div>
+                        <div class="menu-option-text"><a href="#redg.html" data-path-href="html/redg/">REGISTER</a></div>
+                    </div>
+<%}else{%>
+                    <div class="menu-option-holder" style=''>
+                        <div class="menu-option-background"></div>
+                        <div class="menu-option-text">
+                          <a>WELCOME <%=name%></a>
+                          <div class="menu-option-sign">+</div>
+                        </div>
+                        <div class="sub-menu-holder" >
+                          <div class="sub-menu-option-holder" data-module-type="full_width_gallery" data-side="height">
+                              <div class="sub-menu-option-background"></div>
+                              <div class="sub-menu-option-text"><a href="#home/home_layout_1.html" onclick="generatePass()">PRINT YOUR PASS</a></div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="menu-option-holder" data-module-type="text_page" data-side="none" style=''>
+                        <div class="menu-option-background"></div>
+                        <div id='logout' class="menu-option-text"><a href="/users/logout" data-path-href="">LOGOUT</a></div>
+                    </div>
+<%}%>
                     <div class="menu-option-holder" data-module-type="slideshow" data-side="height">
                         <div id="menu-option-background" class="menu-option-background"> </div>
                         <div id="menu-option-text" class="menu-option-text"><a href="#home_layout_1.html" data-path-href="html/home/">HOME</a></div>
@@ -86,6 +114,7 @@
 
                     <div class="menu-option-holder" style='display:none'>
                         <div id="menu-option-background" class="menu-option-background"> </div>
+
                         <div id="menu-option-text" class="menu-option-text">
                             <a href="#">HOME</a>
                             <div class="menu-option-sign">+</div>
@@ -268,20 +297,16 @@
                         <div id="menu-option-background" class="menu-option-background"> </div>
                         <div id="menu-option-text" class="menu-option-text"><a href="#contact.html" data-path-href="html/contact/">CONTACT US</a></div>
                     </div>
-                    <div class="menu-option-holder" data-module-type="text_page" data-side="none" style='display:none'>
-                        <div class="menu-option-background"></div>
-                        <div class="menu-option-text"><a href="#login.html" data-path-href="html/login/">LOGIN</a></div>
-                    </div>
-                    <div class="menu-option-holder" data-module-type="text_page" data-side="none" style='display:none'>
-                        <div class="menu-option-background"></div>
-                        <div class="menu-option-text"><a href="#redg.html" data-path-href="html/redg/">REGISTER</a></div>
-                    </div>
+
 
                     <div class="menu-option-holder" data-module-type="gallery" data-side="height">
                         <div id="menu-option-background" class="menu-option-background"> </div>
                         <div id="menu-option-text" class="menu-option-text"><a href="#sponsor.html" data-path-href="html/sponsor/">SPONSOR</a></div>
                     </div>
-
+                    <div class="menu-option-holder" data-module-type="gallery" data-side="height" onclick='brochure()'>
+                        <div id="menu-option-background" class="menu-option-background"> </div>
+                        <div id="menu-option-text" class="menu-option-text"><a href="home/home_layout_1.html" data-path-href="/html/home/">BROCHURE</a></div>
+                    </div>
 
                     <!-- <div class="menu-option-holder" data-module-type="news" data-side="height">
                         <div id="menu-option-background" class="menu-option-background"> </div>
@@ -331,6 +356,7 @@
                         <option value="#pricing_tables.html" style="display:none">  - Pricing Table</option>
                     <option value="#sponsor.html"> SPONSORS</option>
                     <option value="#contact.html" style="display:none"> CONTACT</option>
+                    <option value="#redg.html">REGISTER</option>
                 </select>
                 </div>
                 <div id="audio-player" data-auto-play="true" data-player-opened="true" data-player-volume="0.6">
@@ -431,6 +457,40 @@
 
     <div id="console-log"></div>
     <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+    <script type="text/javascript">
+        $('#logout').click(function(){
+          window.location.href = '/users/logout'
+        })
+    </script>
+    <script type="text/javascript">
+        var update_other = function(){
+          var college = $('#college').val()
+          if(college == 4){
+            $('#others').show()
+          }else{
+            $('#others').hide()
+          }
+        }
+    </script>
+    <script type="text/javascript">
+      var register = function(eid){
+        $.ajax({
+          url:'/events/register/'+eid,
+          method:'GET',
+          success:function(data){
+            $('#'+eid+'_msg').html(data)
+          }
+        })
+      }
+    </script>
+    <script type="text/javascript">
+      var generatePass = function(){
+        window.location.href='/users/pass'
+      }
+      var brochure = function(){
+        window.location.href='/brochure.pdf'
+      }
+    </script>
 </body>
 
 </html>
