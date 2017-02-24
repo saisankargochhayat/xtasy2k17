@@ -40,7 +40,7 @@ router.post('/register', function(req, res, next) {
     // console.log(validator.validate(req.body.email));
     console.log(req.body.email);
     if((!req.body.email)||(!req.body.name)||(!req.body.password)
-      ||(!req.body.college)||(!req.body.year)||(!req.body))
+      ||(!req.body.college)||(!req.body.accomodation)||(!req.body.year)||(!req.body))
       return res.render('notify',{msg:'invalid signup',url:'/'});
 
     if(!validator.validate(req.body.email))
@@ -65,6 +65,7 @@ router.post('/register', function(req, res, next) {
         year: req.body.year,
         phone: req.body.phone,
         gender: req.body.gender,
+        accomodation : req.body.accomodation,
         verification_hash: md5(req.body.email+(Math.random()*(1000-1)+1000))
     });
 

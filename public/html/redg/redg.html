@@ -281,7 +281,7 @@
                                 <p><input type="password" name="password" placeholder="Password"></p>
                                 <div style="padding-left:12px;" class="input-group" required="">
                                         <span class="radio-inline">
-                                              <input style="display:inline;width:10%;" type="radio" name="gender" id="inlineRadio1" value="male"> Male
+                                              <input style="display:inline;width:10%;" type="radio" name="gender" id="inlineRadio1" value="male" checked> Male
 																						</span>
 																						<span class="radio-inline">
                                               <input style="display:inline;width:10%;" type="radio" name="gender" id="inlineRadio2" value="female"> Female
@@ -291,8 +291,7 @@
                                     <p class="input-group">
                                     <label>College:</label>
                                         <select onchange = 'update_other()'id='college'class="form-control parsley-validated" required="" value="Fill In Your College Name" name="college">
-                                          <option></option>
-                                          <option value="1">College Of Engineering And Technology, Bhubaneswar</option>
+                                          <option value="1" selected>College Of Engineering And Technology, Bhubaneswar</option>
                                           <option value="2">IGIT Sarang</option>
                                           <option value="3">ITER</option>
 																					<option value="4">--Other--</option>
@@ -307,7 +306,7 @@
 
                                 <label>Year Of Study:</label><br><br>
                                         <label class="radio-inline">
-                                          <input style="display:inline;width:10%;"type="radio" name="year" id="inlineRadio1" value="1st"> 1st Year
+                                          <input style="display:inline;width:10%;"type="radio" name="year" id="inlineRadio1" value="1st" checked> 1st Year
                                         </label>
                                         <label class="radio-inline">
                                           <input style="display:inline;width:10%;"type="radio" name="year" id="inlineRadio2" value="2nd"> 2nd Year
@@ -319,7 +318,16 @@
                                           <input style="display:inline;width:10%;"type="radio" name="year" id="inlineRadio3" value="4th" required="" class="parsley-validated"> 4th Year
                                         </label>
                                 </p>
+																<p>
 
+                                <label>Do you require Accomodation ?</label><br><br>
+                                        <label class="radio-inline">
+                                          <input style="display:inline;width:10%;"type="radio" name="accomodation" id="inlineRadio1" value="YES"> YES
+                                        </label>
+                                        <label class="radio-inline">
+                                          <input style="display:inline;width:10%;"type="radio" name="accomodation" id="inlineRadio2" value="NO" checked> NO
+                                        </label>
+                                </p>
                                 <div style="text-align: center">
                                     <p>Already Registered?<a href="#login.html" data-path-href="html/login/"> Sign in</a></p>
                                 </div>

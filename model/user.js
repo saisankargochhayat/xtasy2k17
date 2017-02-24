@@ -42,6 +42,10 @@ var userSchema = mongoose.Schema({
     events: {
         type: [String]
     },
+    accomodation:{
+        type:String,
+        required : true
+    },
     is_verified: {
         type: Boolean,
         default: false
