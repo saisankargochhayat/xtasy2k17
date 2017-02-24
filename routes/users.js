@@ -66,6 +66,14 @@ router.post('/register', function(req, res, next) {
       if(error){
         return console.log(error);
       }else{
+        newUser.save(function(err) {
+            if (err) {
+                return console.log(err.stack);
+            }else{
+              console.log(newUser);
+              res.render('notify',{msg:'Thank you for registering in Xtasy. Check your email to verify!',url:'/#login.html'});
+            }
+        });
         console.log(info);
       }
     })
@@ -81,14 +89,7 @@ router.post('/register', function(req, res, next) {
     //    }
     // });
 
-    newUser.save(function(err) {
-        if (err) {
-            return console.log(err.stack);
-        }else{
-          console.log(newUser);
-          res.render('notify',{msg:'Thank you for registering in Xtasy. Check your email to verify!',url:'/#login.html'});
-        }
-    });
+
 });
 
 //user verification route-> /users/verify/:email/:hash
