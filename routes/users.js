@@ -12,6 +12,10 @@ router.get('/', function(req, res, next) {
     res.send('respond with a resource');
 });
 
+router.get('/pass',function(req,res,next){
+  res.render('pass',{user:req.session.user});
+});
+
 
 //register form action/url -> /users/register
 router.post('/register', function(req, res, next) {
