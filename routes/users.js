@@ -90,21 +90,33 @@ router.post('/register', function(req, res, next) {
       html : 'Thank you for registering in Xtasy, the annual Cultural Fest of CET, Bhubaneswar. Verify your account by clicking <a href="https://xtasy.cetb.in/users/verify/'+newUser.email+'/'+newUser.verification_hash+'">here.</a>'
     }
     console.log(mailOptions);
-    transporter.sendMail(mailOptions,function(error,info){
-      if(error){
-        return console.log(error);
+    user.findOne({'email':req.body.email},function(err,user){
+      if(err){
+        console.log(err);
+        res.send("Please try again later")
       }else{
-        newUser.save(function(err) {
-            if (err) {
-                return console.log(err.stack);
+        if(user){
+          res.render('notify',{msg:'An account with this email is already registered.',url:'/#login.html'});
+        }else{
+          transporter.sendMail(mailOptions,function(error,info){
+            if(error){
+              return console.log(error);
             }else{
-              console.log(newUser);
-              res.render('notify',{msg:'Thank you for registering in Xtasy. Check your email to verify!',url:'/#login.html'});
+              newUser.save(function(err) {
+                  if (err) {
+                      return console.log(err.stack);
+                  }else{
+                    console.log(newUser);
+                    res.render('notify',{msg:'Thank you for registering in Xtasy. Check your email to verify!',url:'/#login.html'});
+                  }
+              });
+              console.log(info);
             }
-        });
-        console.log(info);
+          })
+        }
       }
     })
+
 
     // new mailer.Mail({
     //    from: 'noreply@domain.com',
