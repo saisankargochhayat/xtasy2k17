@@ -1,10 +1,18 @@
 <html>
 <head>
-
   <title></title>
 </head>
 <body>
-  hello <%=user.name%>
+  name <%=user.name%><br/>
+  college <%=user.college%><br />
+  xtasy-id <%=user.xtasyId%><br />
+  events <br/>
+  <% for(var i=0;i<user.events.length;i++){
+    curr_event = user.events[i];
+  %>
+    <h1><%=curr_event%></h1>
+  <%}%>
+
 
 </body>
 </html>
