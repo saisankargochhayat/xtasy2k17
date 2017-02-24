@@ -113,60 +113,46 @@
                     <table>
                         <tr>
                             <td>
-                                Next Step Webs, Inc.<br>
-                                12345 Sunny Road<br>
-                                Sunnyville, TX 12345
+                                College of Engineering and Technology<br>
+                                Ghatikia, Kalinga Nagar<br>
+                                Bhubaneswar,Odisha<br>
+                                751003
+                                
                             </td>
 
                             <td>
-                                Acme Corp.<br>
-                                John Doe<br>
-                                john@example.com
+                                <%=user.college%><br>
+                                <%=user.name%><br>
+                                <%=user.email%>
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
 
-            <tr class="heading">
-                <td>
-                    Payment Method
-                </td>
-
-                <td>
-                    Check #
-                </td>
-            </tr>
-
-            <tr class="details">
-                <td>
-                    Check
-                </td>
-
-                <td>
-                    1000
-                </td>
-            </tr>
 
             <tr class="heading">
                 <td>
-                    Item
+                    Event Id
                 </td>
 
                 <td>
-                    Price
+                    Event Name
                 </td>
             </tr>
+               <% for(var i=0;i<user.events.length;i++)
+                    { %>
 
             <tr class="item">
                 <td>
-                    Website design
+                    <%= user.events[i] %>
                 </td>
 
                 <td>
-                    $300.00
+                    <%= dict[user.events[i]] %>
                 </td>
             </tr>
+                   <% } %>
 
             <tr class="item">
                 <td>
@@ -188,13 +174,7 @@
                 </td>
             </tr>
 
-            <tr class="total">
-                <td></td>
-
-                <td>
-                   Total: $385.00
-                </td>
-            </tr>
+           
         </table>
     </div>
 
