@@ -39,21 +39,19 @@ router.post('/register', function(req, res, next) {
     var transporter = nodemailer.createTransport({
       service:'gmail',
       auth:{
-        user:'rishav.159@gmail.com',
-        pass:'yvzieleknhnjyusu'
+        user:'register.xtasy@gmail.com',
+        pass:'sjferawvfccktwhn'
       }
     });
-    console.log("here");
 
 
     var mailOptions = {
-      from : "rishav.159@gmail.com",
+      from : "register.xtasy@gmail.com",
       to : newUser.email,
       subject : "Account verification for XTASY 2k17",
       html : 'Thank you for registering in Xtasy, the annual Cultural Fest of CET, Bhubaneswar. Verify your account by clicking <a href="http://localhost:3000/users/verify/'+newUser.email+'/'+newUser.verification_hash+'">here.</a>'
     }
 
-    console.log("here");
     transporter.sendMail(mailOptions,function(error,info){
       if(error){
         return console.log(error);
