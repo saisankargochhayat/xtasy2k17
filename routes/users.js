@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 // var mailer = require('node-mailer');
 var user = require('../model/user');
 var md5 = require('md5');
+var validator = require('email-validator');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -13,7 +14,14 @@ router.get('/', function(req, res, next) {
 
 //register form action/url -> /users/register
 router.post('/register', function(req, res, next) {
-    console.log(req.body);
+    // console.log(validator.validate(req.body.email));
+    if((!req.body.email)||(!req.body.name)||(!req.body.password)
+      ||(!req.body.college)||(!req.body.year)||(!req.body))
+      return res.redirect('/?msg=invalid signup');
+
+    if(!validator.validate(req.body.email))
+      return res.redirect('/?msg=invalid email address');
+
     var newUser = new user({
         name: req.body.name,
         password: req.body.password,
@@ -22,8 +30,9 @@ router.post('/register', function(req, res, next) {
         year: req.body.year,
         phone: req.body.phone,
         gender: req.body.gender,
-        verification_hash: md5(req.body.email+'xtasy2k17')
+        verification_hash: md5(req.body.email+(Math.random()*(1000-1)+1000))
     });
+
 
     // new mailer.Mail({
     //    from: 'noreply@domain.com',
