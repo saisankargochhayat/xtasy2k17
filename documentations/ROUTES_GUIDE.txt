@@ -15,7 +15,6 @@ logout
 User account verification
   method: get
   uri : "/users/verify/:email/:hash"
-  where ':id' is the value of _id field of the user's document in database
 
 event creation in db(for admin page)
   method: post

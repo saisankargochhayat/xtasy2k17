@@ -56,7 +56,7 @@ router.post('/register', function(req, res, next) {
     });
 });
 
-//user verification route-> /users/verify/:id
+//user verification route-> /users/verify/:email/:hash
 router.get('/verify/:email/:hash', function(req, res, next) {
     user.findOne({
         email:req.params.email
