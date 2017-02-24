@@ -3,6 +3,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 // var mailer = require('node-mailer');
 var user = require('../model/user');
+var md5 = require('md5');
+var validator = require('email-validator');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -12,7 +14,14 @@ router.get('/', function(req, res, next) {
 
 //register form action/url -> /users/register
 router.post('/register', function(req, res, next) {
-    console.log(req.body);
+    // console.log(validator.validate(req.body.email));
+    if((!req.body.email)||(!req.body.name)||(!req.body.password)
+      ||(!req.body.college)||(!req.body.year)||(!req.body))
+      return res.redirect('/?msg=invalid signup');
+
+    if(!validator.validate(req.body.email))
+      return res.redirect('/?msg=invalid email address');
+
     var newUser = new user({
         name: req.body.name,
         password: req.body.password,
@@ -20,8 +29,10 @@ router.post('/register', function(req, res, next) {
         college: req.body.college,
         year: req.body.year,
         phone: req.body.phone,
-        gender: req.body.gender
+        gender: req.body.gender,
+        verification_hash: md5(req.body.email+(Math.random()*(1000-1)+1000))
     });
+
 
     // new mailer.Mail({
     //    from: 'noreply@domain.com',
@@ -45,20 +56,23 @@ router.post('/register', function(req, res, next) {
     });
 });
 
-//user verification route-> /users/verify/:id
-router.get('/verify/:id', function(req, res, next) {
+//user verification route-> /users/verify/:email/:hash
+router.get('/verify/:email/:hash', function(req, res, next) {
     user.findOne({
-        _id: mongoose.Types.ObjectId(req.params.id)
+        email:req.params.email
     }, function(err, foundUser) {
         if (err) return console.log(err);
         if (foundUser.is_verified == true) return res.send('Account already verified!');
-        foundUser.is_verified = true;
-        foundUser.save(function(err) {
-            if (err) return console.log(err);
-            req.session.user = foundUser;
-            console.log(foundUser);
-            res.redirect('/')
-        });
+        if(foundUser.is_verified != true&&foundUser.verification_hash==req.params.hash){
+          foundUser.is_verified = true;
+          foundUser.save(function(err) {
+              if (err) return console.log(err);
+              req.session.user = foundUser;
+              console.log(foundUser);
+              res.redirect('/')
+          });
+        }
+        else return res.send('incorrect hash');
     });
 });
 
