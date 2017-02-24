@@ -14,9 +14,9 @@ router.get('/', function(req, res, next) {
 
 router.get('/pass',function(req,res,next){
   var event_dict = {
-    '1':"Prove ur move",
+    '1':"Prove Ur Move",
     '2':"Salsa Workshop",
-    '3':"The Daning Feat",
+    '3':"The Dancing Feat",
     '4':"Burnout",
     '5':"The Chosen One",
     '6':"Kalamanch",
