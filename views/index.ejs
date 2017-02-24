@@ -454,6 +454,16 @@
           window.location.href = '/users/logout'
         })
     </script>
+    <script type="text/javascript">
+        var update_other = function(){
+          var college = $('#college').val()
+          if(college == 4){
+            $('#others').show()
+          }else{
+            $('#others').hide()
+          }
+        }
+    </script>
 </body>
 
 </html>
