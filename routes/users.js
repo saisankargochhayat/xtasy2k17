@@ -31,7 +31,7 @@ router.get('/pass',function(req,res,next){
     '15': "Amit Mishra Live",
     '16': "Zephyrtone Live",
   }
-  res.render('pass',{user:req.session.user});
+  res.render('pass',{user:req.session.user,dict:event_dict});
 });
 
 
