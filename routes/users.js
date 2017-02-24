@@ -129,7 +129,7 @@ router.post('/login', function(req, res, next) {
             return console.log(err);
         }
         if (!foundUser) {
-            return res.render('notify',{msg:'Not registered yet'});
+            return res.render('notify',{msg:'Not registered yet',url:'/#redg.html'});
         }
         // test a matching password
         foundUser.comparePassword(req.body.login_password, function(err, isMatch) {
@@ -140,10 +140,10 @@ router.post('/login', function(req, res, next) {
                   res.render('profile',{user:req.session.user});
                 }
                 else{
-                  res.render('notify',{msg:'Account not verified'});
+                  res.render('notify',{msg:'Account not verified',url:'/#login.html'});
                 }
             } else {
-              res.render('notify',{msg:'Email or Password incorrect'});
+              res.render('notify',{msg:'Email or Password incorrect',url:'/#login.html'});
             }
         });
     });
