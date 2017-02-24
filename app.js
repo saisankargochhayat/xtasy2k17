@@ -63,31 +63,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-var nodemailer = require('nodemailer')
-var transporter = nodemailer.createTransport({
-  service:'gmail',
-  auth:{
-    user:'rishav.159@gmail.com',
-    pass:'yvzieleknhnjyusu'
-  }
-})
-var mailOptions = {
-  from : "rishav.159@gmail.com",
-  to : "rishav.159@gmail.com",
-  subject : "Sample Mail",
-  text : "Mehasfasf",
-  html : "Df"
-}
-// transporter.sendMail(mailOptions,function(error,info){
-//   if(error){
-//     return console.log(error);
-//   }else{
-//     console.log(info);
-//   }
-// })
-// send({
-//   subject: 'attached '           // String or array of strings of filenames to attach
-// }, function (err, res) {
-//   console.log('* [example1] send(): err:', err, '; res:', res);
-// });
+
 module.exports = app;
