@@ -93,7 +93,7 @@ router.post('/login', function(req, res, next) {
             return console.log(err);
         }
         if (!foundUser) {
-            return res.json({});
+            return res.redirect('/#redg.html?msg=Not registered yet');
         }
         // test a matching password
         foundUser.comparePassword(req.body.login_password, function(err, isMatch) {
@@ -103,7 +103,7 @@ router.post('/login', function(req, res, next) {
                 console.log(req.session.user._id + " is the user id");
                 console.log(req.session.user.name+ " is the User");
                 console.log(foundUser);
-                res.redirect('/')
+                res.render('index',{user:req.session.user});
             } else {
                 foundUser = {}
                 res.send(foundUser);
