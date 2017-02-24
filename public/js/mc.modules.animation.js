@@ -6,7 +6,7 @@
  **/
 
  /* start GENERAL CUSTOMIZATION PROPERTIES */
-var templateBaseURL         = "http://localhost:3000/";/*"http://themes.mediacreed.com/html/synergy/"*/
+var templateBaseURL         = "http://localhost:3000";/*"http://themes.mediacreed.com/html/synergy/"*/
 var themeColor              = "#702697";
 var menuActive              = true;
 var menuHoverActive         = false; /* it will change to false if menuActive == true. If 'menuActive'
