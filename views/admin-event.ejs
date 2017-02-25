@@ -66,7 +66,7 @@
                         <div class="card">
                             <div class="header">
 
-																	<h4 class="title"><%=event_dict[event.event_id]%></h4>
+																	<h4 class="title"><%=event_dict[event]%></h4>
 
                             </div>
                             <div class="content">
@@ -84,8 +84,8 @@
 																				<th>Accomodation</th>
 																			</thead>
 																			<tbody>
-																				<% for(var i=0;i<event.users.length;i++){
-																					curr_user = event.users[i];%>
+																				<% for(var i=0;i<user_list.length;i++){
+																					curr_user = user_list[i];%>
 																					<tr>
 																							<td><%=curr_user.xtasyId%></td>
 																						<td><%=curr_user.name%></td>

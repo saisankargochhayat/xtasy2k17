@@ -74,26 +74,33 @@ router.get('/',authenticate,function(req, res, next) {
 
 
 router.get('/events/:event_id',function(req, res, next) {
-    events.findOne({event_id: req.params.event_id}).populate('user').exec( function (err, event_data) {
-        if(err){
-          console.log(err);
-          res.render('admin');
-        }
-        else {
-          // for(var i=0;i<event_data.users.length;i++){
-          //   user.findById(event_data.users[i],function(err,curr_user){
-          //     event_data.users[i] = new user(curr_user)
-          //     console.log(event_data.users[i]);
-          //   })
-          // }
-          console.log(event_data);
-          render_data = {
-            'event' : event_data,
-            'event_dict' : event_dict
-          }
-          res.render('admin-event',render_data);
-        }
-    });
+    user.find({events:req.params.event_id},function(err,user_data){
+      if(err){
+        console.log(err);
+        res.render('admin')
+      }else{
+        render_data = {
+                'event' : req.params.event_id,
+                'user_list':user_data,
+                'event_dict' : event_dict
+              }
+              console.log(render_data);
+              res.render('admin-event',render_data);
+      }
+    })
+    // events.findOne({event_id: req.params.event_id},function (err, event_data) {
+    //     if(err){
+    //       console.log(err);
+    //       res.render('admin');
+    //     }
+    //     else {
+    //       render_data = {
+    //         'event' : event_data,
+    //         'event_dict' : event_dict
+    //       }
+    //       res.render('admin-event',render_data);
+    //     }
+    // });
 });
 
 
