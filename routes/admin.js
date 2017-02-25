@@ -39,7 +39,7 @@ var authenticate = function(req,res,next){
 router.get('/admin_signin',function(req,res,next){
   res.render('admin-signin')
 })
-router.get('/admin_signout',function(req,res,next){
+router.post('/admin_signout',function(req,res,next){
   res.session.admin=false
   res.render('admin-signin')
 })
