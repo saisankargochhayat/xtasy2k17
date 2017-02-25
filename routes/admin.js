@@ -3,14 +3,38 @@ var router = express.Router();
 var mongoose = require('mongoose');
 // var mailer = require('node-mailer');
 var user = require('../model/user');
-var Events = require('../model/events'),
-var md5 = require('md5');
-var validator = require('email-validator');
+var events = require('../model/events');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.send('respond with a resource');
+    res.render('admin');
 });
+
+
+router.get('/users', function(req, res, next) {
+    user.find({}, function (err, users) {
+        if(err){
+          console.log(err);
+          res.render('admin');
+        }
+        else {
+          res.render('admin',{"users": users});
+        }
+    });
+});
+
+router.get('/events/:event_id', function(req, res, next) {
+    events.find({event_id: req.params.event_id}, function (err, event_data) {
+        if(err){
+          console.log(err);
+          res.render('admin');
+        }
+        else {
+          res.render('admin',{"event_data": event_data});
+        }
+    });
+});
+
 // var authenticate = function(){
 //   if(req.session){
 //     if(req.session.user){
