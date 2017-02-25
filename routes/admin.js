@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 // var mailer = require('node-mailer');
 var user = require('../model/user');
-var Events = require('../model/events'),
+var Events = require('../model/events');
 var md5 = require('md5');
 var validator = require('email-validator');
 
