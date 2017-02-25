@@ -40,7 +40,7 @@ router.get('/admin_signin',function(req,res,next){
   res.render('admin-signin')
 })
 router.get('/admin_signout',function(req,res,next){
-  res.session = {}
+  res.session.admin=false
   res.render('admin-signin')
 })
 router.post('/admin_signin',function(req,res,next){
