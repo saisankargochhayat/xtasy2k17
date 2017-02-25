@@ -9,8 +9,9 @@ var validator = require('email-validator');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.send('respond with a resource');
+    res.render('admin');
 });
+
 // var authenticate = function(){
 //   if(req.session){
 //     if(req.session.user){

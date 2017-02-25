@@ -9,7 +9,7 @@ var session = require('client-sessions');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var events = require('./routes/events')
-
+var admin = require('./routes/admin')
 var app = express();
 
 // view engine setup
@@ -33,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/events',events)
+app.user('/admin',admin)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
