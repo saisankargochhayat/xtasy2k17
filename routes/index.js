@@ -29,5 +29,7 @@ router.get('/', function(req, res, next) {
 
   //res.render('login-register');
 });
-
+router.get('/admin',function(req,res,next){
+  res.render('admin');
+})
 module.exports = router;
