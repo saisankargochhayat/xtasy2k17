@@ -4,69 +4,97 @@ var mongoose = require('mongoose');
 // var mailer = require('node-mailer');
 var user = require('../model/user');
 var events = require('../model/events');
-
+var event_dict = {
+  '1':"Prove Ur Move",
+  '2':"Salsa Workshop",
+  '3':"The Dancing Feat",
+  '4':"Burnout",
+  '5':"The Chosen One",
+  '6':"Kalamanch",
+  '7':"Pukaar",
+  '8': "Goonj",
+  '9': "Karaoke",
+  '10': "War of Bands",
+  '11': "Sp-ent and India Quiz",
+  '12': "Broadcast",
+  '13': "I-Kavi",
+  '14': "Terribly Tiny Tales",
+  '15': "Amit Mishra Live",
+  '16': "Zephyrtone Live",
+}
+var authenticate = function(req,res,next){
+  console.log("Trying to authenticate");
+  console.log(req.session);
+  if(req.session){
+    if(req.session.admin){
+      next()
+    }else{
+      res.redirect('/admin/admin_signin')
+    }
+  }else{
+      res.redirect('/admin/admin_signin')
+  }
+}
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-    res.render('admin');
+router.get('/admin_signin',function(req,res,next){
+  res.render('admin-signin')
+})
+router.get('/admin_signout',function(req,res,next){
+  res.session = {}
+  res.render('admin-signin')
+})
+router.post('/admin_signin',function(req,res,next){
+  if(typeof req.body.password != 'undefined'){
+    if(req.body.password == 'admin@xtasy2017'){
+      res.session = {}
+      req.session.admin = true
+      res.redirect('/admin')
+    }else{
+      res.send("incorrect password")
+    }
+  }else{
+    res.send("Please send Password")
+  }
+});
+router.get('/',authenticate,function(req, res, next) {
+  user.find({'is_verified':true}, function (err, users) {
+      if(err){
+        console.log(err);
+        res.render('admin');
+      }
+      else {
+        var render_data = {
+          'users' : users,
+          'event_dict':event_dict
+        }
+        res.render('admin',render_data);
+      }
+  });
 });
 
 
-router.get('/users', function(req, res, next) {
-    user.find({}, function (err, users) {
+router.get('/events/:event_id',function(req, res, next) {
+    events.findOne({event_id: req.params.event_id}).populate('user').exec( function (err, event_data) {
         if(err){
           console.log(err);
           res.render('admin');
         }
         else {
-          res.render('admin',{"users": users});
+          // for(var i=0;i<event_data.users.length;i++){
+          //   user.findById(event_data.users[i],function(err,curr_user){
+          //     event_data.users[i] = new user(curr_user)
+          //     console.log(event_data.users[i]);
+          //   })
+          // }
+          console.log(event_data);
+          render_data = {
+            'event' : event_data,
+            'event_dict' : event_dict
+          }
+          res.render('admin-event',render_data);
         }
     });
 });
-
-router.get('/events/:event_id', function(req, res, next) {
-    events.find({event_id: req.params.event_id}, function (err, event_data) {
-        if(err){
-          console.log(err);
-          res.render('admin');
-        }
-        else {
-          res.render('admin',{"event_data": event_data});
-        }
-    });
-});
-
-// var authenticate = function(){
-//   if(req.session){
-//     if(req.session.user){
-//       i
-//     }else{
-//       res.redirect('/')
-//     }
-//   }else{
-//     res.redirect('/')
-//   }
-// }
-
-//register form action/url -> /users/register
-// router.get('/get_all', authenticate,function(req, res, next) {
-//   Events.find({},function(err,events){
-//     if(err){
-//       console.log(err);
-//       res.send('err')
-//     }else{
-//       for(var i=0;i<events.length;i++){
-//         curr_event = events[i];
-//         user.find
-//       }
-//     }
-//   })
-// });
-
-//user verification route-> /users/verify/:email/:hash
-
-
-
-//logout href -> /users/logout
 
 
 module.exports = router;
