@@ -6,7 +6,7 @@
  **/
 
  /* start GENERAL CUSTOMIZATION PROPERTIES */
-var templateBaseURL         = "https://xtasy.cetb.in/";/*"http://themes.mediacreed.com/html/synergy/"*/
+var templateBaseURL         = "http://localhost:3000/";/*"http://themes.mediacreed.com/html/synergy/"*/
 var themeColor              = "#702697";
 var menuActive              = true;
 var menuHoverActive         = false; /* it will change to false if menuActive == true. If 'menuActive'
@@ -37,7 +37,7 @@ $(document).ready(function(){
 /* start load function */
 $(window).load(function(){
 	readyAndLoad++;
-    if(templateBaseURL == "xtasy.cetb.in" || templateBaseURL == "null"){
+    if(templateBaseURL == "localhost:3000" || templateBaseURL == "null"){
         $("body").empty().css("visibility", "visible").append("<br/><span>Please check the documentation - 2.1 General Settings - on how to change the 'templateBaseURL' path!!!</span>");
         return;
     }
