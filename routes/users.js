@@ -98,10 +98,6 @@ router.post('/register', function(req, res, next) {
         if(user){
           res.render('notify',{msg:'An account with this email is already registered.',url:'/#login.html'});
         }else{
-          transporter.sendMail(mailOptions,function(error,info){
-            if(error){
-              return console.log(error);
-            }else{
               newUser.save(function(err) {
                   if (err) {
                       return console.log(err.stack);
@@ -112,9 +108,23 @@ router.post('/register', function(req, res, next) {
                     // res.render('notify',{msg:'Thank you for registering in Xtasy. Check your email to verify!',url:'/#login.html'});
                   }
               });
-              console.log(info);
-            }
-          })
+          // transporter.sendMail(mailOptions,function(error,info){
+          //   if(error){
+          //     return console.log(error);
+          //   }else{
+          //     newUser.save(function(err) {
+          //         if (err) {
+          //             return console.log(err.stack);
+          //         }else{
+          //           console.log(newUser);
+          //           req.session.user = newUser;
+          //           res.redirect('/')
+          //           // res.render('notify',{msg:'Thank you for registering in Xtasy. Check your email to verify!',url:'/#login.html'});
+          //         }
+          //     });
+          //     console.log(info);
+          //   }
+          // })
         }
       }
     })
