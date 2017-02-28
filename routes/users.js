@@ -107,7 +107,9 @@ router.post('/register', function(req, res, next) {
                       return console.log(err.stack);
                   }else{
                     console.log(newUser);
-                    res.render('notify',{msg:'Thank you for registering in Xtasy. Check your email to verify!',url:'/#login.html'});
+                    req.session.user = newUser;
+                    res.redirect('/')
+                    // res.render('notify',{msg:'Thank you for registering in Xtasy. Check your email to verify!',url:'/#login.html'});
                   }
               });
               console.log(info);
@@ -175,7 +177,8 @@ router.post('/login', function(req, res, next) {
         foundUser.comparePassword(req.body.login_password, function(err, isMatch) {
             if (err) throw err;
             if (isMatch) {
-                if(foundUser.is_verified){
+                // if(foundUser.is_verified){
+                if(true){
                   req.session.user = foundUser;
                   res.redirect('/');
                 }
