@@ -48,7 +48,7 @@ var userSchema = mongoose.Schema({
     },
     is_verified: {
         type: Boolean,
-        default: false
+        default: true
     },
     verification_hash: {
       type: String

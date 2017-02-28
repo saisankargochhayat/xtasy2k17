@@ -57,7 +57,7 @@ router.post('/admin_signin',function(req,res,next){
   }
 });
 router.get('/',authenticate,function(req, res, next) {
-  user.find({'is_verified':true}, function (err, users) {
+  user.find({}, function (err, users) {
       if(err){
         console.log(err);
         res.render('admin');
